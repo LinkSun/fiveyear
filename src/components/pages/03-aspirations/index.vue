@@ -16,9 +16,18 @@
         </div>
         <footer class="footer">
             <input id="text" type="text" placeholder="说出你祝福..." v-model="inputValue">
-            <van-icon name="smile-o" />
+            <van-icon name="smile-o" @click="checkemoj" />
             <button @click="send">发送</button>
         </footer>
+        <van-popup v-model="emojShow" position="bottom" :overlay="false">
+            <div class="my-emojlists">
+                <ul>
+                    <li v-for="(item, index) in emojLists" :key="index" >
+                        <img :src="item.address" alt="" @click="emojHide(item)">
+                    </li>
+                </ul>
+            </div>
+        </van-popup>
     </div>
 
 </template>
@@ -28,18 +37,132 @@ import { Toast } from 'vant'
 import { Icon } from 'vant'
 import { PullRefresh } from 'vant'
 import { Notify } from 'vant'
+import { Popup } from 'vant'
+
 Vue.use(Toast)
     .use(Icon)
     .use(PullRefresh)
     .use(Notify)
+    .use(Popup)
 import wxChat from './children/wxChat'
 export default {
     name: 'Aspirations',
     data() {
         return {
+            emojLists: [
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/2.gif'),
+                    content: '[撇嘴]',
+                },
+                 {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/2.gif'),
+                    content: '[撇嘴]',
+                },
+                 {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/2.gif'),
+                    content: '[撇嘴]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+                 {
+                    address: require('../../../assets/emoj/74.gif'),
+                    content: '[赞]',
+                },
+            ],
+            emojShow: false, //表情选择
             isLoading: false, //下拉刷新
             isShow: false, //默认不显示
-            inputValue: '',
+            inputValue: '', //输入框的值
             // 心声内容
             upperTimes: 0,
             underTimes: 0,
@@ -83,7 +206,7 @@ export default {
                 },
                 {
                     direction: 1,
-                    id: 3,
+                    id: 4,
                     type: 1,
                     auther: '../../../../../static/img/avatar5.png',
                     content: '反手就是几个赞[害羞][害羞][害羞]',
@@ -91,12 +214,14 @@ export default {
                 },
                 {
                     direction: 2,
-                    id: 4,
+                    id: 5,
                     type: 1,
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
                     // ctime: new Date().toLocaleString(),
-                },
+                }
+                
+               
             ],
         }
     },
@@ -110,13 +235,33 @@ export default {
         }
     },
     methods: {
+        // 表情显示
+        checkemoj() {
+            // 选择表情事件
+            this.emojShow = true
+        },
+        // 表情隐藏
+        emojHide(value) {
+            this.emojShow = false
+            // console.log(value.content);
+            this.inputValue = this.inputValue.concat(value.content)
+        },
         send() {
             if (this.inputValue != '') {
                 Toast.success('    提交成功        等待审核')
+                // 增加数据,
+                this.wxChatData.push({
+                    direction: 2,
+                    id: 6,
+                    type: 1,
+                    auther: '../../../../../static/img/avatar1.png',
+                    content: `上市五周年,雄起 ! ! !${this.inputValue}`,
+                    // ctime: new Date().toLocaleString(),
+                })
                 this.inputValue = ''
             } else {
                 Notify({
-                    message: '你还没输入内容呢,请先输入内容吧',
+                    message: '内容不能为空哦',
                     duration: 2000,
                     background: '#1989fa',
                 })
@@ -221,6 +366,7 @@ li {
     float: left;
     width: 13.48rem;
     height: 2.18rem;
+    font-size: 16px;
 }
 .footer i {
     width: 2.3rem;
@@ -236,5 +382,11 @@ li {
     background-color: #333b46;
     color: #fff;
     border-radius: 5px;
+}
+.my-emojlists ul{
+    padding: 20px;
+}
+.my-emojlists ul li{
+    float: left;
 }
 </style>

@@ -134,17 +134,12 @@ export default {
     methods: {
         initData() {
             this.dataArray = this.dataArray.concat(this.data)
-        },
-
-      
-
-       
+        },  
     },
 }
 </script>
 
 <style scoped>
-/* 删除了position: fixed; left:0; top: 0; */
 .wxchat-container {
     width: 100%;
     height: 100%;

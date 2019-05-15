@@ -29,6 +29,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 
+
 }
 .van-nav-bar .van-icon {
     color: #000;

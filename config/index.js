@@ -10,6 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // assetsPublicPath: './',//2019年5月15日09:31:21这里不要去改,不然测试环境无法开启
     proxyTable: {},
 
     // Various Dev Server settings
@@ -43,7 +44,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    // assetsPublicPath: '/',
+    assetsPublicPath: './',//这里我修改了
 
     /**
      * Source Maps

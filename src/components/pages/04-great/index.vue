@@ -7,32 +7,40 @@
             <img src="../../../../static/img/jinqu.jpg" alt="">
             
         </div>
-        <div class="footer">
-            <div class="lrc">
+        <van-row class="footer">
+            <van-col span="16" class="lrc">
                 <div>
                     我们不一样，彩生活正在谱写不一样的自己，
                     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                    xxxxxxxxxx
                  
                 </div>
-            </div>
-            <div class="good">
-                <van-icon name="like" />
+            </van-col>
+            <van-col span="8" class="good">
+                <!-- <van-icon name="like" /> -->
+                <img :src="imgs" alt="">
                 <div>投票</div>
-            </div>
-        </div>
+            </van-col>
+        </van-row>
     </div>
 </template>
 <script>
 import Vue from 'vue'
 import { Icon } from 'vant';
+import { Row, Col } from 'vant';
 
-Vue.use(Icon);
-export default {}
+
+
+Vue.use(Icon).use(Row).use(Col);
+export default {
+    data() {
+        return {
+            imgs:require('../../../../static/img/zan.png')//使用require导入,避免图片路径不对
+        }
+    },
+}
 </script>
 <style scoped>
-/* .container{
-    background-color: #ccc;
-} */
 .title {
     width: 100%;
     height: 4rem;
@@ -41,7 +49,7 @@ export default {}
 }
 .main {
     width: 100%;
-    height: 22.25rem;
+    height: 23.25rem;
 }
 .main img{
     display: block;
@@ -50,23 +58,17 @@ export default {}
 }
 .footer {
     height: 8rem;
-    width: 100%;
-    display: flex;
-    padding-top: 2.37rem;
-    
-
+    padding-top: 1.37rem;
 }
 .footer .good{
-    width: 25%;
     height: 8.31rem;
     color: #42b3ff;
-
-    
+}
+.footer .good img{
+    width: 2rem;
 }
 .footer .lrc{
-    width: 75%;
     height: 8.31rem;
-    /* background-color: skyblue; */
     font-size: .8rem;
    
 }

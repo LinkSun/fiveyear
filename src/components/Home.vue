@@ -1,47 +1,35 @@
 <template>
     <div class="home">
-        <van-swipe :autoplay="3000" indicator-color="white" >
-            <van-swipe-item>
-                <img src="../../static/img/lunbo3.jpg" alt="">
-            </van-swipe-item>
-            <van-swipe-item>
-                <img src="../../static/img/lunbo2.jpg" alt="">
-            </van-swipe-item>
-             <van-swipe-item>
-                <img src="../../static/img/lunbo3.jpg" alt="">
-            </van-swipe-item>
-             <van-swipe-item>
-                <img src="../../static/img/lunbo2.jpg" alt="">
-            </van-swipe-item>
-             <van-swipe-item>
-                <img src="../../static/img/lunbo3.jpg" alt="">
-            </van-swipe-item>
-        </van-swipe>
+        <header class="header">
+            <img src="../../static/img/lunbo3.jpg" alt="">
+        </header>
         <main class="main">
             <div>
                 <ul>
-                    <li v-for="(item, index) in menus" :key="index"> 
-                            <router-link :to="item.route">
-                                <h3>{{item.title}}</h3>
-                                <p>{{item.english}}</p>
-                            </router-link>
-                        
-
+                    <li v-for="(item, index) in menus" :key="index">
+                        <router-link :to="item.route">
+                            <h3>{{item.title}}</h3>
+                            <p>{{item.english}}</p>
+                        </router-link>
                     </li>
-
                 </ul>
             </div>
+            <!--  -->
+            <van-row class="foot">
+                <van-col span="24">
+                    <div class="ch">彩生活服务集团上市5周年庆</div>
+                    <div class="en">Fifth Anniversary of Colour Life Service Group's Listing</div>
+                </van-col>
+            </van-row>
         </main>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { NavBar, Swipe, SwipeItem } from 'vant'
+import { NavBar } from 'vant'
 //vant按需引入
 Vue.use(NavBar)
-    .use(Swipe)
-    .use(SwipeItem)
 export default {
     name: 'Home',
     data() {
@@ -73,8 +61,8 @@ export default {
                     route: { name: 'Story' },
                 },
                 {
-                    title: '团建活动',
-                    english: 'REGIMENT BUILDING',
+                    title: '图片直播',
+                    english: 'PICTURE LIVE BROADCAST',
                     route: { name: 'Regiment' },
                 },
             ],
@@ -93,56 +81,69 @@ export default {
 
 
 <style scoped>
-.van-swipe {
-    height: 220px;
+.home {
+    background-color: #04223b;
+    height: 40.88rem;
 }
-
-
-.main{
-    height: 28rem;
-    background-color: #dadbf0;
+.header {
+    height: 10.37rem;
 }
-
-.main > div {
-    padding:0 20px 20px 20px;
-}
-.main img {
+.header img {
     width: 100%;
     height: 100%;
 }
 
+.main {
+    height: 28.43rem;
+}
+
+.main > div {
+    padding: 0 20px 20px 20px;
+    height: 19rem;
+}
+.main img {
+    width: 100%;
+}
 
 .main ul li {
-      width: 8.1rem;
-      background-color: hotpink;
-      margin-top: 2rem;
-      border-radius: 10px;
-    
+    width: 8.1rem;
+    background-color: #dce8eb;
+    margin-top: 2rem;
+    border-radius: 10px;
 }
-.main ul li:nth-child(odd){
+.main ul li:nth-child(odd) {
     float: left;
 }
-.main ul li:nth-child(even){
+.main ul li:nth-child(even) {
     float: right;
     margin-left: 0.45rem;
 }
 .main ul li a {
-    color: #6f1e9d;  
-   
+    color: #455ea3;
 }
-.main ul li a h3{
-    height: .6rem;
-    line-height: .6rem;
+.main ul li a h3 {
+    height: 0.6rem;
+    line-height: 0.6rem;
 }
-.main ul li a p{
+.main ul li a p {
     display: block;
-    height: .5rem;
-    line-height: 0.5rem;   
-    font-size: .2rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.2rem;
+    /* 让文字一行显示 */
+    word-break: keep-all;
+    white-space: nowrap;
+    /* 字体让它小于12px */
+    transform: scale(0.8);
 }
-
-
-
-
-
+.foot {
+    height: 8rem;
+    color: #e5e7ea;
+}
+.foot .ch {
+    font-size: 0.8rem;
+}
+.foot .en {
+    font-size: 0.6rem;
+}
 </style>
