@@ -27,9 +27,10 @@
 
 <script>
 import Vue from 'vue'
-import { NavBar } from 'vant'
+import { NavBar } from 'vant';
+import { Row, Col } from 'vant';
 //vant按需引入
-Vue.use(NavBar)
+Vue.use(NavBar).use(Row).use(Col)
 export default {
     name: 'Home',
     data() {
@@ -69,11 +70,7 @@ export default {
         }
     },
     created() {
-        this.$axios.get('activity/messageview?id=1').then(res=>{
-          console.log(res);
-        }).catch(error=>{
-          console.log(error);
-        })
+    
     },
     methods: {},
 }

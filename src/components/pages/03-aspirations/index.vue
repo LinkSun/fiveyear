@@ -182,7 +182,6 @@ export default {
                 {
                     direction: 1,
                     id: 1,
-                    type: 1,
                     auther: '../../../../../static/img/avatar2.png',
                     content: '上市五周年,雄起 ! ! !',
                     // ctime: new Date().toLocaleString(),
@@ -190,7 +189,6 @@ export default {
                 {
                     direction: 1,
                     id: 2,
-                    type: 1,
                     auther: '../../../../../static/img/avatar3.png',
                     content: '反手就是几个赞 [强][强][强]',
                     // ctime: new Date().toLocaleString(),
@@ -198,28 +196,19 @@ export default {
                 {
                     direction: 1,
                     id: 3,
-                    type: 1,
                     auther: '../../../../../static/img/avatar4.png',
                     content:
                         '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
                     // ctime: new Date().toLocaleString(),
                 },
                 {
-                    direction: 1,
-                    id: 4,
-                    type: 1,
-                    auther: '../../../../../static/img/avatar5.png',
-                    content: '反手就是几个赞[害羞][害羞][害羞]',
-                    // ctime: new Date().toLocaleString(),
-                },
-                {
                     direction: 2,
                     id: 5,
-                    type: 1,
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
                     // ctime: new Date().toLocaleString(),
                 },
+               
             ],
         }
     },
@@ -231,6 +220,7 @@ export default {
             // 下面这个后续解开
             this.isShow = true
         }
+
     },
     methods: {
         // 表情显示
@@ -246,30 +236,19 @@ export default {
         },
         send() {
             if (this.inputValue != '') {
-                
-            //    this.$axios.post('/activity/messageadd', 
-            //         { 
-            //             access_token:123,
-            //             content:"测试的内容"
-            //         })
-            //         .then(function(response) {
-            //             console.log(response)
-            //         })
-            //         .catch(function(error) {
-            //             console.log(error)
-            //         })
+                // 测试发送
+                // this.$axios
+                //     .get(
+                //         `/activity/messageadd?access_token=123&content=${this.inputValue}`
+                //     )
+                //     .then(function(response) {
+                //         // console.log(response)
+                //     })
+                //     .catch(function(error) {
+                //         console.log(error)
+                //     })
 
-                    Toast.success('    提交成功        等待审核')
-                
-                // 增加数据,
-                // this.wxChatData.push({
-                //     direction: 2,
-                //     id: 6,
-                //     type: 1,
-                //     auther: '../../../../../static/img/avatar1.png',
-                //     content: `上市五周年,雄起 ! ! !${this.inputValue}`,
-                //     ctime: new Date().toLocaleString(),
-                // })
+                Toast.success('    提交成功        等待审核')
                 this.inputValue = ''
             } else {
                 Notify({
@@ -310,7 +289,6 @@ export default {
 <style scoped>
 /* 这是我增加的心声布局
  */
-
 * {
     margin: 0;
     padding: 0;
@@ -368,7 +346,7 @@ li {
 .footer {
     position: fixed;
     bottom: 0;
-    width: 23.18rem;
+    width: 20rem;
     height: 2.18rem;
     z-index: 999;
     background-color: white;

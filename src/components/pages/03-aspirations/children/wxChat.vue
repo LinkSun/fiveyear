@@ -59,7 +59,7 @@
                             <div :class="'main' + (message.direction==2?' self':'')" v-else>
                                 <img class="avatar" width="45" height="45" :src="message.auther">
                                 <!-- 文本 -->
-                                <div class="text" v-emotion="message.content" v-if="message.type==1"></div>
+                                <div class="text" v-emotion="message.content" ></div>
                                 
                             </div>
                         </li>
@@ -123,9 +123,26 @@ export default {
             dataArray: [],
         }
     },
+    beforeCreate() {
+                   // 增加数据
+        // this.$axios
+        //     .get('activity/messageview')
+        //     .then(res => {
+        //         console.log(res);
+
+        //         let resValue=res.data.content[5];
+        //         let jsValue=JSON.parse(resValue)
+        //         // console.log(jsValue)
+        //         this.dataArray.push(jsValue)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     }) 
+    },
 
     created() {
-        this.initData()
+        this.initData();
+  
     },
     mounted() {
    
@@ -222,7 +239,7 @@ button {
     text-decoration: underline;
 }
 .message {
-    height: 24rem;
+    /* height: 24rem; */
     padding: 10px 15px;
     /*overflow-y: scroll;*/
     background-color: #f5f5f5;
