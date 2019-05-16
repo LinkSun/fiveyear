@@ -69,11 +69,11 @@ export default {
         }
     },
     created() {
-        // this.$axios.get('getlunbo').then(res=>{
-        //   console.log(res);
-        // }).catch(error=>{
-        //   console.log(error);
-        // })
+        this.$axios.get('activity/messageview?id=1').then(res=>{
+          console.log(res);
+        }).catch(error=>{
+          console.log(error);
+        })
     },
     methods: {},
 }

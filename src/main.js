@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 
 import Axios from "axios";
 Vue.prototype.$axios =Axios;
-// Axios.defaults.baseURL="https://www.sinya.online/api/";//配置基地址
+Axios.defaults.baseURL="http://laravel.com/";//配置基地址
 
 /**
  * 转换成图片表情

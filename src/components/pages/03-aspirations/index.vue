@@ -22,7 +22,7 @@
         <van-popup v-model="emojShow" position="bottom" :overlay="false">
             <div class="my-emojlists">
                 <ul>
-                    <li v-for="(item, index) in emojLists" :key="index" >
+                    <li v-for="(item, index) in emojLists" :key="index">
                         <img :src="item.address" alt="" @click="emojHide(item)">
                     </li>
                 </ul>
@@ -74,31 +74,7 @@ export default {
                     address: require('../../../assets/emoj/2.gif'),
                     content: '[撇嘴]',
                 },
-                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/2.gif'),
-                    content: '[撇嘴]',
-                },
-                 {
                     address: require('../../../assets/emoj/1.gif'),
                     content: '[微笑]',
                 },
@@ -122,39 +98,63 @@ export default {
                     address: require('../../../assets/emoj/2.gif'),
                     content: '[撇嘴]',
                 },
-                 {
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/1.gif'),
+                    content: '[微笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/2.gif'),
+                    content: '[撇嘴]',
+                },
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
-                 {
+                {
                     address: require('../../../assets/emoj/74.gif'),
                     content: '[赞]',
                 },
@@ -219,9 +219,7 @@ export default {
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
                     // ctime: new Date().toLocaleString(),
-                }
-                
-               
+                },
             ],
         }
     },
@@ -248,16 +246,30 @@ export default {
         },
         send() {
             if (this.inputValue != '') {
-                Toast.success('    提交成功        等待审核')
+                
+            //    this.$axios.post('/activity/messageadd', 
+            //         { 
+            //             access_token:123,
+            //             content:"测试的内容"
+            //         })
+            //         .then(function(response) {
+            //             console.log(response)
+            //         })
+            //         .catch(function(error) {
+            //             console.log(error)
+            //         })
+
+                    Toast.success('    提交成功        等待审核')
+                
                 // 增加数据,
-                this.wxChatData.push({
-                    direction: 2,
-                    id: 6,
-                    type: 1,
-                    auther: '../../../../../static/img/avatar1.png',
-                    content: `上市五周年,雄起 ! ! !${this.inputValue}`,
-                    // ctime: new Date().toLocaleString(),
-                })
+                // this.wxChatData.push({
+                //     direction: 2,
+                //     id: 6,
+                //     type: 1,
+                //     auther: '../../../../../static/img/avatar1.png',
+                //     content: `上市五周年,雄起 ! ! !${this.inputValue}`,
+                //     ctime: new Date().toLocaleString(),
+                // })
                 this.inputValue = ''
             } else {
                 Notify({
@@ -383,10 +395,10 @@ li {
     color: #fff;
     border-radius: 5px;
 }
-.my-emojlists ul{
+.my-emojlists ul {
     padding: 20px;
 }
-.my-emojlists ul li{
+.my-emojlists ul li {
     float: left;
 }
 </style>
