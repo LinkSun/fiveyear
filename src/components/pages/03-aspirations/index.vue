@@ -20,7 +20,8 @@
             <button @click="send">发送</button>
         </footer>
         <van-popup v-model="emojShow" position="bottom" :overlay="false">
-            <div class="my-emojlists">
+            
+            <div class="my-emojlists" >
                 <ul>
                     <li v-for="(item, index) in emojLists" :key="index">
                         <img :src="item.address" alt="" @click="emojHide(item)">
@@ -162,7 +163,7 @@ export default {
                     content: '[赞]',
                 },
             ],
-            youhuiShow:false,//优惠
+            youhuiShow: false, //优惠
             emojShow: false, //表情选择
             isLoading: false, //下拉刷新
             isShow: false, //默认不显示
@@ -212,7 +213,6 @@ export default {
                     content: '上市五周年,雄起 ! ! ![微笑]',
                     // ctime: new Date().toLocaleString(),
                 },
-               
             ],
         }
     },
@@ -224,7 +224,6 @@ export default {
             // 下面这个后续解开
             this.isShow = true
         }
-
     },
     methods: {
         // 表情显示
@@ -292,7 +291,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 /* 这是我增加的心声布局
  */
 * {
@@ -328,27 +327,29 @@ li {
 }
 .top {
     height: 220px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
-.top img {
-    width: 100%;
-    height: 100%;
-}
+
 .main {
     height: 27.18rem;
     margin-bottom: 2.18rem;
-}
-.main img {
-    margin: 7rem auto;
-}
-.main .message {
-    height: 27.18rem;
-    padding: 10px;
-}
-.main .message .content {
-    height: 28rem;
+    img {
+        margin: 7rem auto;
+    }
+    .message {
+        height: 27.18rem;
+        padding: 10px;
+        .content {
+            height: 28rem;
 
-    background-color: skyblue;
+            background-color: skyblue;
+        }
+    }
 }
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -356,33 +357,34 @@ li {
     height: 2.18rem;
     z-index: 999;
     background-color: white;
+    input {
+        padding-left: 0.62rem;
+        float: left;
+        width: 13.48rem;
+        height: 2.18rem;
+        font-size: 16px;
+    }
+    i {
+        width: 2.3rem;
+        height: 2.18rem;
+        line-height: 2.18rem;
+        float: left;
+        font-size: 1.5rem;
+    }
+    button {
+        width: 3.2rem;
+        height: 2.18rem;
+        float: left;
+        background-color: #333b46;
+        color: #fff;
+        border-radius: 5px;
+    }
 }
-.footer input {
-    padding-left: 0.62rem;
-    float: left;
-    width: 13.48rem;
-    height: 2.18rem;
-    font-size: 16px;
-}
-.footer i {
-    width: 2.3rem;
-    height: 2.18rem;
-    line-height: 2.18rem;
-    float: left;
-    font-size: 1.5rem;
-}
-.footer button {
-    width: 3.2rem;
-    height: 2.18rem;
-    float: left;
-    background-color: #333b46;
-    color: #fff;
-    border-radius: 5px;
-}
+
 .my-emojlists ul {
     padding: 20px;
-}
-.my-emojlists ul li {
-    float: left;
+    li {
+        float: left;
+    }
 }
 </style>

@@ -7,6 +7,7 @@ import Aspirations from '../components/pages/03-aspirations/index.vue'
 import Great from '../components/pages/04-great/index.vue'
 import Story from '../components/pages/05-story/index.vue'
 import Regiment from '../components/pages/06-regiment/index.vue'
+import liveRegiment from '../components/pages/06-regiment/children/liveRegiment.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/6',
       name: 'Regiment',
       component: Regiment
+    },
+    {
+      path: '/liveRegiment',
+      name: 'liveRegiment',
+      component: liveRegiment
     }
 
   ]

@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    background-color: #f5f5f9;
+    // background-color: #f5f5f9;
 }
 .header span {
     font-size: 0.8rem;
