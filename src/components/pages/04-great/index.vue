@@ -1,6 +1,14 @@
 <template>
     <div class="great">
+        <div class="content1">
 
+        </div>
+        <div class="content2">
+
+        </div>
+        <div class="content3">
+
+        </div>
         <img src="../../../../static/img/great1.jpg" alt="">
         <img src="../../../../static/img/great2.jpg" alt="">
         <img src="../../../../static/img/great3.jpg" alt="">
@@ -17,14 +25,19 @@ export default {
 
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .great {
     width: 100%;
     height: 100%;
-}
-.great img {
+    img {
+    display: block;
     width: 100%;
+    }
 }
 
+
+.content1{
+
+}
 
 </style>

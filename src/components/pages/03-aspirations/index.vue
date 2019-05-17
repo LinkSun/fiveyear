@@ -28,6 +28,9 @@
                 </ul>
             </div>
         </van-popup>
+        <!-- <van-popup v-model="youhuiShow"  :overlay="false" >
+            <img src="../../../../static/img/xs-youhui.jpg" alt="">
+        <van-popup> -->
     </div>
 
 </template>
@@ -159,6 +162,7 @@ export default {
                     content: '[赞]',
                 },
             ],
+            youhuiShow:false,//优惠
             emojShow: false, //表情选择
             isLoading: false, //下拉刷新
             isShow: false, //默认不显示
@@ -250,6 +254,8 @@ export default {
 
                 Toast.success('    提交成功        等待审核')
                 this.inputValue = ''
+                // 这里后续加一个判断
+                // this.youhuiShow=true;
             } else {
                 Notify({
                     message: '内容不能为空哦',

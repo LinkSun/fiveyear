@@ -27,10 +27,12 @@
 
 <script>
 import Vue from 'vue'
-import { NavBar } from 'vant';
-import { Row, Col } from 'vant';
+import { NavBar } from 'vant'
+import { Row, Col } from 'vant'
 //vant按需引入
-Vue.use(NavBar).use(Row).use(Col)
+Vue.use(NavBar)
+    .use(Row)
+    .use(Col)
 export default {
     name: 'Home',
     data() {
@@ -69,37 +71,35 @@ export default {
             ],
         }
     },
-    created() {
-    
-    },
+    created() {},
     methods: {},
 }
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 .home {
     background-color: #04223b;
     height: 40.88rem;
 }
 .header {
     height: 10.37rem;
-}
-.header img {
-    width: 100%;
-    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .main {
     height: 28.43rem;
+    img {
+        width: 100%;
+    }
 }
 
 .main > div {
     padding: 0 20px 20px 20px;
     height: 19rem;
-}
-.main img {
-    width: 100%;
 }
 
 .main ul li {
@@ -117,30 +117,31 @@ export default {
 }
 .main ul li a {
     color: #455ea3;
+    h3 {
+        height: 0.6rem;
+        line-height: 0.6rem;
+    }
+    p {
+        display: block;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.2rem;
+        /* 让文字一行显示 */
+        word-break: keep-all;
+        white-space: nowrap;
+        /* 字体让它小于12px */
+        transform: scale(0.8);
+    }
 }
-.main ul li a h3 {
-    height: 0.6rem;
-    line-height: 0.6rem;
-}
-.main ul li a p {
-    display: block;
-    height: 0.5rem;
-    line-height: 0.5rem;
-    font-size: 0.2rem;
-    /* 让文字一行显示 */
-    word-break: keep-all;
-    white-space: nowrap;
-    /* 字体让它小于12px */
-    transform: scale(0.8);
-}
+
 .foot {
     height: 8rem;
     color: #e5e7ea;
-}
-.foot .ch {
-    font-size: 0.8rem;
-}
-.foot .en {
-    font-size: 0.6rem;
+    .ch {
+        font-size: 0.8rem;
+    }
+    .en {
+        font-size: 0.6rem;
+    }
 }
 </style>
