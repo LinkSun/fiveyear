@@ -14,6 +14,19 @@ import Axios from "axios";
 Vue.prototype.$axios =Axios;
 Axios.defaults.baseURL="http://laravel.com/";//配置基地址
 
+// 图片懒加载
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload)
+
+// or with options
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '../static/img/erro-404.jpg',
+  loading: '../static/img/loading2.gif',
+  attempt: 1
+})
+
 /**
  * 转换成图片表情
  */

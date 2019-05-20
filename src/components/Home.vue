@@ -91,7 +91,7 @@ export default {
 
 .home {
     background-color: #04223b;
-    height: 40.88rem;
+    // height: 40.88rem;
 }
 .header {
     height: 10.37rem;
@@ -102,7 +102,7 @@ export default {
 }
 
 .main {
-    height: 28.43rem;
+    // height: 28.43rem;
     img {
         width: 100%;
     }

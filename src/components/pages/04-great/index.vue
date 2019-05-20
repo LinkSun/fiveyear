@@ -14,13 +14,60 @@
         </div>
         <div class="content3">
             <!-- <p>第三页</p> -->
+            <div class="music">
+                <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 逆战</label> 
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />我们不一样</label> 
+                    </van-col>
+                </van-row>
+                  <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 我的未来不是梦</label> 
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />光阴的故事</label> 
+                    </van-col>
+                </van-row>
+                  <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 向天再借五百年</label> 
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />越过山丘</label> 
+                    </van-col>
+                </van-row>
+                  <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 最美的太阳</label> 
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />倔强</label> 
+                    </van-col>
+                </van-row>
+                  <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 像我这样的人</label> 
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />朋友</label> 
+                    </van-col>
+                </van-row>
 
+            </div>
+            <van-button type="default" class="my-btn">提交</van-button>
         </div>
-
     </div>
-
 </template>
 <script>
+import Vue from 'vue'
+
+import { Row, Col } from 'vant'
+import { Button } from 'vant';
+
+Vue.use(Row).use(Col).use(Button);
 export default {
     name: 'great',
     data() {
@@ -28,8 +75,8 @@ export default {
     },
     methods: {
         onClickLeft() {
-          this.$router.go(-1) 
-        }
+            this.$router.go(-1)
+        },
     },
 }
 </script>
@@ -37,12 +84,12 @@ export default {
 .van-nav-bar .van-icon {
     color: #000;
 }
-.van-nav-bar__title{
-  font-size: .9rem;
+.van-nav-bar__title {
+    font-size: 0.9rem;
 }
 .great {
     width: 100%;
-    height: 111.25rem;
+    // height: 111.25rem;
     .content1 {
         background: url('../../../../static/img/great1-2.jpg') no-repeat center
             top;
@@ -102,5 +149,19 @@ export default {
     -webkit-animation-timing-function: ease-in-out; /*动画的速度曲线*/
     -webkit-animation-iteration-count: infinite; /*动画播放的次数*/
     -webkit-animation-duration: 5s; /*动画所花费的时间*/
+}
+
+.music {
+    padding-top: 10rem;
+}
+.van-row{
+    text-align: left;
+    padding-left: 1.8rem;
+    margin-top: 1.25rem;
+}
+.my-btn{
+    width: 12rem;
+    margin-top: 2.37rem;
+
 }
 </style>

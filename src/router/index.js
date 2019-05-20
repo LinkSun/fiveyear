@@ -8,6 +8,7 @@ import Great from '../components/pages/04-great/index.vue'
 import Story from '../components/pages/05-story/index.vue'
 import Regiment from '../components/pages/06-regiment/index.vue'
 import liveRegiment from '../components/pages/06-regiment/children/liveRegiment.vue'
+import wholeCountry from '../components/pages/06-regiment/children/wholeCountry.vue'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/liveRegiment',
       name: 'liveRegiment',
       component: liveRegiment
+    },
+    {
+      path: '/wholeCountry',
+      name: 'wholeCountry',
+      component: wholeCountry
     }
 
   ]
