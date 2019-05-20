@@ -1,5 +1,6 @@
 <template>
     <div class="aspirations">
+        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
         <div class="top">
             <img src="../../../../static/img/lunbo2.jpg" alt="">
         </div>
@@ -20,8 +21,8 @@
             <button @click="send">发送</button>
         </footer>
         <van-popup v-model="emojShow" position="bottom" :overlay="false">
-            
-            <div class="my-emojlists" >
+
+            <div class="my-emojlists">
                 <ul>
                     <li v-for="(item, index) in emojLists" :key="index">
                         <img :src="item.address" alt="" @click="emojHide(item)">
@@ -226,6 +227,9 @@ export default {
         }
     },
     methods: {
+        onClickLeft() {
+          this.$router.go(-1) 
+        },
         // 表情显示
         checkemoj() {
             // 选择表情事件
@@ -292,33 +296,11 @@ export default {
 
 
 <style lang="scss" scoped>
-/* 这是我增加的心声布局
- */
-* {
-    margin: 0;
-    padding: 0;
+.van-nav-bar .van-icon {
+    color: #000;
 }
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-h1,
-h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
+.van-nav-bar__title {
+    font-size: 0.9rem;
 }
 
 /* 这是心声聊天的其它部分 */

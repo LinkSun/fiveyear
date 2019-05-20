@@ -1,7 +1,8 @@
 <template>
     <div class="container">
+        <van-nav-bar title="故事荟" left-text="" left-arrow @click-left="onClickLeft" />
         <div class="header">
-            <p>故事荟</p>
+            <!-- <p>故事荟</p> -->
             <span>
                 欢迎分享您身边的故事，投稿至xxxxx@xx.com
             </span>
@@ -40,12 +41,26 @@ export default {
             ],
         }
     },
+    methods: {
+        onClickLeft() {
+            this.$router.go(-1)
+        },
+    },
 }
 </script>
 
 <style lang="scss" scoped>
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title {
+    font-size: 0.9rem;
+}
 .container {
-    // background-color: #f5f5f9;
+    background-color: #f5f5f9;
+}
+.header {
+    margin-top: 10px;
 }
 .header span {
     font-size: 0.8rem;

@@ -1,5 +1,6 @@
 <template>
     <div class="great">
+        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
         <div class="content1">
             <!-- <p>第一页</p> -->
             <!-- 动画 -->
@@ -25,26 +26,35 @@ export default {
     data() {
         return {}
     },
+    methods: {
+        onClickLeft() {
+          this.$router.go(-1) 
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title{
+  font-size: .9rem;
+}
 .great {
     width: 100%;
     height: 111.25rem;
     .content1 {
         background: url('../../../../static/img/great1-2.jpg') no-repeat center
             top;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            >div{
-                padding-bottom: 1.87rem;
-            }
-            p{
-                text-align: center;
-            }
-            
-        
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        > div {
+            padding-bottom: 1.87rem;
+        }
+        p {
+            text-align: center;
+        }
     }
     .content2 {
         background: url('../../../../static/img/great2.jpg') no-repeat center
@@ -83,7 +93,6 @@ export default {
     }
 }
 .ballon {
-  
     border-radius: 50%;
     width: 60px;
     height: 60px;

@@ -1,27 +1,28 @@
 <template>
     <div>
         <!-- 头部 -->
+        <van-nav-bar title="图片直播" left-text="" left-arrow @click-left="onClickLeft" />
         <header class="header">
-            <img src="../../../../static/img/alive.jpg" alt="">
+            <img src="../../../../static/img/header.jpg" alt="">
         </header>
         <!-- main主体 -->
         <main class="main">
             <!-- 标题部分 -->
             <section class="detail-1">
                 <div class="">
-                    <h1>彩生活上市五周年庆</h1>
+                    <h1>彩生活服务集团上市5周年庆</h1>
                 </div>
                 <div class="detail-content">
                     <p class="">
                         <span>活动时间：</span>
-                        <span id="activityTime">2018.12.08 08:30 ~ 2018.12.09 22:00</span>
+                        <span id="activityTime">2019.06.01 - 2019.06.30 </span>
                     </p>
 
                 </div>
             </section>
             <!-- 热门图片部分 -->
             <section class="hot">
-                <h2>热门图片</h2>
+                <h2>历届司庆图片展示</h2>
                 <div class="common-box">
                     <img src="../../../../static/img/avatar3.png" alt="">
                     <img src="../../../../static/img/avatar2.png" alt="">
@@ -41,10 +42,9 @@
             <section class="list">
                 <h2>图片直播入口</h2>
                 <ul>
-                    <li  v-for="(item, index) in aliveList" :key="index" @click="toZongbu(item)">
+                    <li v-for="(item, index) in aliveList" :key="index" @click="toZongbu(item)">
                         {{item.name}}
                     </li>
-                    
 
                 </ul>
             </section>
@@ -54,46 +54,53 @@
 </template>
 <script>
 export default {
-    name:"regiment",
-    data(){
-        return{
-            aliveList:[
-                {   
+    name: 'regiment',
+    data() {
+        return {
+            aliveList: [
+                {
                     // id:1,//设定一个总部id
-                    name:"集团总部"
+                    name: '集团总部',
                 },
-                 {
-                    name:"华中事业部"
+                {
+                    name: '华中事业部',
                 },
-                 {
-                    name:"华南事业部"
+                {
+                    name: '华南事业部',
                 },
-                 {
-                    name:"华中事业部"
+                {
+                    name: '华中事业部',
                 },
-                 {
-                    name:"华南事业部"
+                {
+                    name: '华南事业部',
                 },
-                 {
-                    name:"华中事业部"
+                {
+                    name: '华中事业部',
                 },
-                 {
-                    name:"华南事业部"
+                {
+                    name: '华南事业部',
                 },
-                
-
-            ]
+            ],
         }
     },
     methods: {
-        toZongbu(item){
+        toZongbu(item) {
             // 带参数变成:liveRegiment?id=item.name
-            this.$router.push({ path: 'liveRegiment', query: { id: item.id }})
+            this.$router.push({ path: 'liveRegiment', query: { id: item.id } })
+        },
+        onClickLeft() {
+          this.$router.go(-1) 
         }
     },
 }
 </script>
 <style lang="scss" scoped>
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title{
+  font-size: .9rem;
+}
 .header img {
     display: block;
     width: 100%;
@@ -151,14 +158,12 @@ export default {
             li {
                 height: 3.75rem;
                 margin-top: 1rem;
-                  height: 3.75rem;
-            line-height: 3.75rem;
+                height: 3.75rem;
+                line-height: 3.75rem;
             }
-           
         }
     }
 }
-
 
 .list ul li:nth-child(odd) {
     background-color: #013d9c;

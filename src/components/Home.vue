@@ -1,7 +1,8 @@
 <template>
     <div class="home">
+        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
         <header class="header">
-            <img src="../../static/img/lunbo3.jpg" alt="">
+            <img src="../../static/img/header.jpg" alt="">
         </header>
         <main class="main">
             <div>
@@ -27,11 +28,10 @@
 
 <script>
 import Vue from 'vue'
-import { NavBar } from 'vant'
 import { Row, Col } from 'vant'
+
 //vant按需引入
-Vue.use(NavBar)
-    .use(Row)
+Vue.use(Row)
     .use(Col)
 export default {
     name: 'Home',
@@ -72,12 +72,23 @@ export default {
         }
     },
     created() {},
-    methods: {},
+    methods: {
+        onClickLeft() {
+          this.$router.go(-1) 
+        }
+    },
 }
 </script>
 
 
 <style lang="scss" scoped>
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title{
+  font-size: .9rem;
+}
+
 .home {
     background-color: #04223b;
     height: 40.88rem;
