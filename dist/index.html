@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui"><title>彩生活上市五周年庆</title><style>html,body{
+      max-width: 500px;
+      min-width: 320px;
+      margin: 0 auto;
+      /* background-color: #04223b; */
+    }</style><link href=/static/css/app.08a61308f55ab8e463fe0f3389230ca2.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.c1ec8dca26d1bafc257f.js></script><script type=text/javascript src=/static/js/app.56e90e286cb4ad8ad34c.js></script></body></html><script>function gethtmlfontsize(){
+       // 三个步骤:
+    // 1.获取html的宽,
+    let htmlwidth=document.documentElement.clientWidth || document.body.clientWidth;//有些浏览器documentElement获取不到,那就使用后面的body
+    // console.log(htmlwidth);
+    
+    // 2.htmlDom
+    let htmlDom=document.getElementsByTagName("html")[0]
+    // console.log(htmlDom);
+
+    //3.设置根元素样式
+    if(htmlwidth > 500){
+      htmlwidth=500;
+    }
+    htmlDom.style.fontSize=htmlwidth/20+'px'; 
+}
+gethtmlfontsize();
+window.addEventListener('resize',gethtmlfontsize)</script>

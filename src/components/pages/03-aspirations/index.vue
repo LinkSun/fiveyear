@@ -7,33 +7,38 @@
 
         <div class="main">
             <!-- 下面是显示的背景 -->
-            <img src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow">
+            <img class="bgc" src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow">
             <!-- van-pull-refresh下拉刷新 -->
             <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
                 <wxChat :data="wxChatData" :showShade="false" :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="width">
                 </wxChat>
             </van-pull-refresh>
-
+            <!-- 这里增加弹框 -->
+            <van-dialog v-model="youhuiShow" title="恭喜你获得司庆福利" show-cancel-button :showConfirmButton=false>
+                <img class="youhui-bgc" src="../../../../static/img/xs-youhuiquan.jpg">
+            </van-dialog>
+            <!--  -->
         </div>
         <footer class="footer">
             <input id="text" type="text" placeholder="说出你祝福..." v-model="inputValue">
             <van-icon name="smile-o" @click="checkemoj" />
             <button @click="send">发送</button>
-                    <van-popup v-model="emojShow" position="bottom" :overlay="false">
+            <van-popup v-model="emojShow" position="bottom" :overlay="false">
 
-            <div class="my-emojlists">
-                <ul>
-                    <li v-for="(item, index) in emojLists" :key="index">
-                        <img :src="item.address" alt="" @click="emojHide(item)">
-                    </li>
-                </ul>
-            </div>
-        </van-popup>
+                <div class="my-emojlists">
+                    <ul>
+                        <li v-for="(item, index) in emojLists" :key="index">
+                            <img :src="item.address" alt="" @click="emojHide(item)">
+                        </li>
+                    </ul>
+                </div>
+            </van-popup>
+            <!-- <van-popup v-model="youhuiShow" :overlay="false">
+            <img src="../../../../static/img/xs-youhui.jpg" alt="">
+            <van-popup> -->
+
         </footer>
 
-        <!-- <van-popup v-model="youhuiShow"  :overlay="false" >
-            <img src="../../../../static/img/xs-youhui.jpg" alt="">
-        <van-popup> -->
     </div>
 
 </template>
@@ -44,12 +49,14 @@ import { Icon } from 'vant'
 import { PullRefresh } from 'vant'
 import { Notify } from 'vant'
 import { Popup } from 'vant'
+import { Dialog } from 'vant'
 
 Vue.use(Toast)
     .use(Icon)
     .use(PullRefresh)
     .use(Notify)
     .use(Popup)
+    .use(Dialog)
 import wxChat from './children/wxChat'
 export default {
     name: 'Aspirations',
@@ -229,7 +236,7 @@ export default {
     },
     methods: {
         onClickLeft() {
-          this.$router.go(-1) 
+            this.$router.go(-1)
         },
         // 表情显示
         checkemoj() {
@@ -256,10 +263,11 @@ export default {
                 //         console.log(error)
                 //     })
 
-                Toast.success('    提交成功        等待审核')
+                // 最新需求:不需要这个
+                // Toast.success('    提交成功        等待审核')
                 this.inputValue = ''
-                // 这里后续加一个判断
-                // this.youhuiShow=true;
+                // 这里后续加一个优惠券弹框判断,已加
+                this.youhuiShow = true
             } else {
                 Notify({
                     message: '内容不能为空哦',
@@ -317,9 +325,10 @@ export default {
 }
 
 .main {
+    position: relative;
     height: 27.18rem;
     margin-bottom: 2.18rem;
-    img {
+    .bgc {
         margin: 7rem auto;
     }
     .message {
@@ -370,7 +379,10 @@ export default {
         float: left;
     }
 }
-.van-popup--bottom{
-width: 20rem;
+.van-popup--bottom {
+    width: 20rem;
+}
+.youhui-bgc {
+    width: 278px;
 }
 </style>

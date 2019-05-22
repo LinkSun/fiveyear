@@ -11,7 +11,7 @@
         </div>
         <div class="content2">
             <!-- <p>第二页</p> -->
-            <video width="320" height="240" controls>
+            <video  controls>
                 <source src="../../../../static/video/movie.mp4" type="video/mp4">
             </video>
         </div>
@@ -69,10 +69,13 @@ import Vue from 'vue'
 
 import { Row, Col } from 'vant'
 import { Button } from 'vant'
+import { Swipe, SwipeItem } from 'vant'
 
 Vue.use(Row)
     .use(Col)
     .use(Button)
+    .use(Swipe)
+    .use(SwipeItem)
 export default {
     name: 'great',
     data() {
@@ -169,11 +172,11 @@ export default {
     margin-top: 2.37rem;
 }
 
-.content2{
-    video{
-      margin-top: 7.4rem; 
-      width: 17rem; 
-      height: 13rem;
+.content2 {
+    video {
+        margin-top: 7.4rem;
+        width: 17rem;
+        height: 13rem;
     }
 }
 </style>

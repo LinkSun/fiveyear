@@ -6,23 +6,60 @@
         </header>
         <main class="main">
             <div>
-                <ul>
-                    <li v-for="(item, index) in menus" :key="index">
-                        <router-link :to="item.route">
-                            <h3>{{item.title}}</h3>
-                            <p>{{item.english}}</p>
+
+                <van-row type="flex" justify="space-between">
+                    <van-col span="10">
+                        <router-link :to="li1.route">
+                            <h3>{{li1.title}}</h3>
+                            <p>{{li1.english}}</p>
                         </router-link>
-                    </li>
-                </ul>
+
+                    </van-col>
+                    <van-col span="10">
+                        <router-link :to="li2.route">
+                            <h3>{{li2.title}}</h3>
+                            <p>{{li2.english}}</p>
+                        </router-link>
+                    </van-col>
+                </van-row>
+                <van-row type="flex" justify="space-between">
+                    <van-col span="12">
+                        <router-link :to="li3.route">
+                            <h3>{{li3.title}}</h3>
+                            <p>{{li3.english}}</p>
+                        </router-link>
+                    </van-col>
+                    <van-col span="12">
+                        <router-link :to="li4.route">
+                            <h3>{{li4.title}}</h3>
+                            <p>{{li4.english}}</p>
+                        </router-link>
+                    </van-col>
+                </van-row>
+                <van-row type="flex" justify="space-between">
+                    <van-col span="12">
+                        <router-link :to="li5.route">
+                            <h3>{{li5.title}}</h3>
+                            <p>{{li5.english}}</p>
+                        </router-link>
+                    </van-col>
+                    <van-col span="12">
+                        <router-link :to="li6.route">
+                            <h3>{{li6.title}}</h3>
+                            <p>{{li6.english}}</p>
+                        </router-link>
+                    </van-col>
+                </van-row>
+            
             </div>
-            <!--  -->
-            <van-row class="foot">
-                <van-col span="24">
-                    <div class="ch">彩生活服务集团上市5周年庆</div>
-                    <div class="en">Fifth Anniversary of Colour Life Service Group's Listing</div>
-                </van-col>
-            </van-row>
+
         </main>
+        <van-row class="foot">
+            <van-col span="24">
+                <div class="ch">彩生活服务集团上市5周年庆</div>
+                <div class="en">Fifth Anniversary of Colour Life Service Group's Listing</div>
+            </van-col>
+        </van-row>
     </div>
 </template>
 
@@ -31,51 +68,49 @@ import Vue from 'vue'
 import { Row, Col } from 'vant'
 
 //vant按需引入
-Vue.use(Row)
-    .use(Col)
+Vue.use(Row).use(Col)
 export default {
     name: 'Home',
     data() {
         return {
-            menus: [
-                {
-                    title: '欢迎信',
-                    english: 'WELCOME LETTER',
-                    route: { name: 'Welcome' },
-                },
-                {
-                    title: '庆典流程',
-                    english: 'CELEBRATION PROCESS',
-                    route: { name: 'Celebration' },
-                },
-                {
-                    title: '心声',
-                    english: 'ASPIRATIONS',
-                    route: { name: 'Aspirations' },
-                },
-                {
-                    title: '金曲',
-                    english: 'GREAT HIT',
-                    route: { name: 'Great' },
-                },
-                {
-                    title: '故事荟',
-                    english: 'STORY COLLECTION',
-                    route: { name: 'Story' },
-                },
-                {
-                    title: '图片直播',
-                    english: 'PICTURE LIVE BROADCAST',
-                    route: { name: 'Regiment' },
-                },
-            ],
+            li1: {
+                title: '欢迎信',
+                english: 'WELCOME LETTER',
+                route: { name: 'Welcome' },
+            },
+            li2: {
+                title: '庆典流程',
+                english: 'CELEBRATION PROCESS',
+                route: { name: 'Celebration' },
+            },
+            li3: {
+                title: '心 声',
+                english: 'ASPIRATIONS',
+                route: { name: 'Aspirations' },
+            },
+            li4: {
+                title: '金 曲',
+                english: 'GREAT HIT',
+                route: { name: 'Great' },
+            },
+            li5: {
+                title: '故事荟',
+                english: 'STORY COLLECTION',
+                route: { name: 'Story' },
+            },
+            li6: {
+                title: '图片直播',
+                english: 'PICTURE LIVE BROADCAST',
+                route: { name: 'Regiment' },
+            },
+
         }
     },
     created() {},
     methods: {
         onClickLeft() {
-          this.$router.go(-1) 
-        }
+            this.$router.go(-1)
+        },
     },
 }
 </script>
@@ -85,8 +120,8 @@ export default {
 .van-nav-bar .van-icon {
     color: #000;
 }
-.van-nav-bar__title{
-  font-size: .9rem;
+.van-nav-bar__title {
+    font-size: 0.9rem;
 }
 
 .home {
@@ -113,38 +148,34 @@ export default {
     height: 19rem;
 }
 
-.main ul li {
+.main > div .van-col {
     width: 8.1rem;
-    background-color: #dce8eb;
-    margin-top: 2rem;
+    // background-color: #dce8eb;
+    background: url("../../static/img/icon_bg@2x.png") center center no-repeat;
+    margin-top: 1.8rem;
     border-radius: 10px;
-}
-.main ul li:nth-child(odd) {
-    float: left;
-}
-.main ul li:nth-child(even) {
-    float: right;
-    margin-left: 0.45rem;
-}
-.main ul li a {
     color: #455ea3;
     h3 {
         height: 0.6rem;
         line-height: 0.6rem;
+        color: #455ea3;
     }
     p {
+        color: #455ea3;
         display: block;
         height: 0.5rem;
         line-height: 0.5rem;
-        font-size: 0.2rem;
+        font-size: 0.6rem;
         /* 让文字一行显示 */
         word-break: keep-all;
         white-space: nowrap;
         /* 字体让它小于12px */
-        transform: scale(0.8);
+        // transform: scale(0.8);
     }
 }
-
+.main > div .van-row {
+    height: 6.1rem;
+}
 .foot {
     height: 8rem;
     color: #e5e7ea;
@@ -155,4 +186,5 @@ export default {
         font-size: 0.6rem;
     }
 }
+
 </style>
