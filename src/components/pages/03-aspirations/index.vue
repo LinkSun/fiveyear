@@ -19,8 +19,7 @@
             <input id="text" type="text" placeholder="说出你祝福..." v-model="inputValue">
             <van-icon name="smile-o" @click="checkemoj" />
             <button @click="send">发送</button>
-        </footer>
-        <van-popup v-model="emojShow" position="bottom" :overlay="false">
+                    <van-popup v-model="emojShow" position="bottom" :overlay="false">
 
             <div class="my-emojlists">
                 <ul>
@@ -30,6 +29,8 @@
                 </ul>
             </div>
         </van-popup>
+        </footer>
+
         <!-- <van-popup v-model="youhuiShow"  :overlay="false" >
             <img src="../../../../static/img/xs-youhui.jpg" alt="">
         <van-popup> -->
@@ -368,5 +369,8 @@ export default {
     li {
         float: left;
     }
+}
+.van-popup--bottom{
+width: 20rem;
 }
 </style>

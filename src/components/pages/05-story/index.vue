@@ -12,7 +12,7 @@
             <div> 欢迎你写下散发着闪亮光芒的每一位彩生活人故事。 </div>
             <div>以“300字左右，2-3张图片”的格式,</div>
             <div> 投稿至邮箱：
-                <span>cshzcb@sina.com</span>
+                <span @click="goSina">cshzcb@sina.com</span>
             </div>
         </header>
         <main class="main">
@@ -36,12 +36,17 @@
 export default {
     name: 'story',
     data() {
-        return {}
+        return {
+            url:"http://mail.sina.com.cn",//去外网
+        }
     },
     methods: {
         onClickLeft() {
             this.$router.go(-1)
         },
+        goSina(){
+           window.location.href=this.url;
+        }
     },
 }
 </script>

@@ -11,48 +11,51 @@
         </div>
         <div class="content2">
             <!-- <p>第二页</p> -->
+            <video width="320" height="240" controls>
+                <source src="../../../../static/video/movie.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="content3">
             <!-- <p>第三页</p> -->
             <div class="music">
                 <van-row>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" /> 逆战</label> 
+                        <label><input name="Fruit" type="checkbox" value="" /> 逆战</label>
                     </van-col>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" />我们不一样</label> 
-                    </van-col>
-                </van-row>
-                  <van-row>
-                    <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" /> 我的未来不是梦</label> 
-                    </van-col>
-                    <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" />光阴的故事</label> 
+                        <label><input name="Fruit" type="checkbox" value="" />我们不一样</label>
                     </van-col>
                 </van-row>
-                  <van-row>
+                <van-row>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" /> 向天再借五百年</label> 
+                        <label><input name="Fruit" type="checkbox" value="" /> 我的未来不是梦</label>
                     </van-col>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" />越过山丘</label> 
-                    </van-col>
-                </van-row>
-                  <van-row>
-                    <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" /> 最美的太阳</label> 
-                    </van-col>
-                    <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" />倔强</label> 
+                        <label><input name="Fruit" type="checkbox" value="" />光阴的故事</label>
                     </van-col>
                 </van-row>
-                  <van-row>
+                <van-row>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" /> 像我这样的人</label> 
+                        <label><input name="Fruit" type="checkbox" value="" /> 向天再借五百年</label>
                     </van-col>
                     <van-col span="12">
-                        <label><input name="Fruit" type="checkbox" value="" />朋友</label> 
+                        <label><input name="Fruit" type="checkbox" value="" />越过山丘</label>
+                    </van-col>
+                </van-row>
+                <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 最美的太阳</label>
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />倔强</label>
+                    </van-col>
+                </van-row>
+                <van-row>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" /> 像我这样的人</label>
+                    </van-col>
+                    <van-col span="12">
+                        <label><input name="Fruit" type="checkbox" value="" />朋友</label>
                     </van-col>
                 </van-row>
 
@@ -65,9 +68,11 @@
 import Vue from 'vue'
 
 import { Row, Col } from 'vant'
-import { Button } from 'vant';
+import { Button } from 'vant'
 
-Vue.use(Row).use(Col).use(Button);
+Vue.use(Row)
+    .use(Col)
+    .use(Button)
 export default {
     name: 'great',
     data() {
@@ -154,14 +159,21 @@ export default {
 .music {
     padding-top: 10rem;
 }
-.van-row{
+.van-row {
     text-align: left;
     padding-left: 1.8rem;
     margin-top: 1.25rem;
 }
-.my-btn{
+.my-btn {
     width: 12rem;
     margin-top: 2.37rem;
+}
 
+.content2{
+    video{
+      margin-top: 7.4rem; 
+      width: 17rem; 
+      height: 13rem;
+    }
 }
 </style>
