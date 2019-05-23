@@ -1,0 +1,8 @@
+colourlife_fiveyears_webapp:
+  image: "${image_name}"
+  ports:
+    - "5555:2333"
+  volumes:
+       - "/etc/localtime:/etc/localtime:ro"
+       - "/data/logs/nodejs/colourlife_fiveyears_webapp/:/var/log/nginx"
+  restart: always  

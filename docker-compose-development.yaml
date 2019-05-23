@@ -1,0 +1,5 @@
+colourlife_fiveyears_webapp:
+  build: .
+  tty: true
+  command: ./run.sh
+

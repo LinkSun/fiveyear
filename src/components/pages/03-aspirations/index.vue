@@ -1,37 +1,58 @@
 <template>
     <div class="aspirations">
-        <div class="top">
+        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
+        <!-- <div class="top">
             <img src="../../../../static/img/lunbo2.jpg" alt="">
-        </div>
+        </div> -->
+        <header class="header">
+
+            <div>
+                6205个日夜，因为有你，
+            </div>
+            <div>彩生活一直走在服务社区的前进道路上。 </div>
+            <div>5年的风雨兼程，5年的患难与共。</div>
+            <div>我们的每一个小区，都是彩生活的一颗颗宝贵珍珠， </div>
+            <div>每一个工作岗位，都是彩生活前进的螺丝钉。</div>
+            <div> 你的心里话，我很想听…… </div>
+            <div>上市5周年，感恩与我共5 ，留下你的心声，</div>
+            <div>共同追溯过往，展望美好未来！</div>
+
+        </header>
 
         <div class="main">
             <!-- 下面是显示的背景 -->
-            <img src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow">
+            <img class="bgc" src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow">
             <!-- van-pull-refresh下拉刷新 -->
             <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
                 <wxChat :data="wxChatData" :showShade="false" :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="width">
                 </wxChat>
             </van-pull-refresh>
-
+            <!-- 这里增加弹框 -->
+            <van-dialog v-model="youhuiShow" title="恭喜你获得司庆福利" show-cancel-button :showConfirmButton=false>
+                <img class="youhui-bgc" src="../../../../static/img/xs-youhuiquan.jpg">
+            </van-dialog>
+            <!--  -->
         </div>
         <footer class="footer">
             <input id="text" type="text" placeholder="说出你祝福..." v-model="inputValue">
             <van-icon name="smile-o" @click="checkemoj" />
             <button @click="send">发送</button>
-        </footer>
-        <van-popup v-model="emojShow" position="bottom" :overlay="false">
-            
-            <div class="my-emojlists" >
-                <ul>
-                    <li v-for="(item, index) in emojLists" :key="index">
-                        <img :src="item.address" alt="" @click="emojHide(item)">
-                    </li>
-                </ul>
-            </div>
-        </van-popup>
-        <!-- <van-popup v-model="youhuiShow"  :overlay="false" >
+            <van-popup v-model="emojShow" position="bottom" :overlay="false">
+
+                <div class="my-emojlists">
+                    <ul>
+                        <li v-for="(item, index) in emojLists" :key="index">
+                            <img :src="item.address" alt="" @click="emojHide(item)">
+                        </li>
+                    </ul>
+                </div>
+            </van-popup>
+            <!-- <van-popup v-model="youhuiShow" :overlay="false">
             <img src="../../../../static/img/xs-youhui.jpg" alt="">
-        <van-popup> -->
+            <van-popup> -->
+
+        </footer>
+
     </div>
 
 </template>
@@ -42,13 +63,16 @@ import { Icon } from 'vant'
 import { PullRefresh } from 'vant'
 import { Notify } from 'vant'
 import { Popup } from 'vant'
+import { Dialog } from 'vant'
 
 Vue.use(Toast)
     .use(Icon)
     .use(PullRefresh)
     .use(Notify)
     .use(Popup)
-import wxChat from './children/wxChat'
+    .use(Dialog)
+import wxChat from './children/wxChat';
+
 export default {
     name: 'Aspirations',
     data() {
@@ -59,104 +83,153 @@ export default {
                     content: '[微笑]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
-                },
-                {
                     address: require('../../../assets/emoj/2.gif'),
                     content: '[撇嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/3.gif'),
+                    content: '[色]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/4.gif'),
+                    content: '[发呆]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/5.gif'),
+                    content: '[得意]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/6.gif'),
+                    content: '[闭眼]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/7.gif'),
+                    content: '[害羞]',
                 },
                 {
-                    address: require('../../../assets/emoj/2.gif'),
+                    address: require('../../../assets/emoj/8.gif'),
+                    content: '[闭嘴]',
+                },
+                {
+                    address: require('../../../assets/emoj/9.gif'),
+                    content: '[睡]',
+                },
+                {
+                    address: require('../../../assets/emoj/10.gif'),
+                    content: '[流泪]',
+                },
+                {
+                    address: require('../../../assets/emoj/11.gif'),
+                    content: '[发怒]',
+                },
+                  {
+                    address: require('../../../assets/emoj/17.gif'),
                     content: '[撇嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/18.gif'),
+                    content: '[哎]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/19.gif'),
+                    content: '[发怒]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/20.gif'),
+                    content: '[吐了]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/21.gif'),
+                    content: '[偷笑]',
                 },
                 {
-                    address: require('../../../assets/emoj/1.gif'),
-                    content: '[微笑]',
+                    address: require('../../../assets/emoj/22.gif'),
+                    content: '[害羞]',
                 },
                 {
-                    address: require('../../../assets/emoj/2.gif'),
+                    address: require('../../../assets/emoj/23.gif'),
+                    content: '[斜眼]',
+                },
+                {
+                    address: require('../../../assets/emoj/24.gif'),
+                    content: '[歪嘴]',
+                },
+                {
+                    address: require('../../../assets/emoj/25.gif'),
+                    content: '[舔]',
+                },
+                  {
+                    address: require('../../../assets/emoj/17.gif'),
                     content: '[撇嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/18.gif'),
+                    content: '[哎]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/19.gif'),
+                    content: '[发怒]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/20.gif'),
+                    content: '[吐了]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/21.gif'),
+                    content: '[偷笑]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/22.gif'),
+                    content: '[害羞]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/23.gif'),
+                    content: '[斜眼]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/24.gif'),
+                    content: '[歪嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    address: require('../../../assets/emoj/25.gif'),
+                    content: '[舔]',
+                },
+                
+                {
+                    address: require('../../../assets/emoj/17.gif'),
+                    content: '[撇嘴]',
+                },
+                {
+                    address: require('../../../assets/emoj/18.gif'),
+                    content: '[哎]',
+                },
+                {
+                    address: require('../../../assets/emoj/19.gif'),
+                    content: '[发怒]',
+                },
+                {
+                    address: require('../../../assets/emoj/20.gif'),
+                    content: '[吐了]',
+                },
+                {
+                    address: require('../../../assets/emoj/21.gif'),
+                    content: '[偷笑]',
+                },
+                {
+                    address: require('../../../assets/emoj/22.gif'),
+                    content: '[害羞]',
+                },
+                {
+                    address: require('../../../assets/emoj/23.gif'),
+                    content: '[斜眼]',
+                },
+                {
+                    address: require('../../../assets/emoj/24.gif'),
+                    content: '[歪嘴]',
+                },
+                {
+                    address: require('../../../assets/emoj/25.gif'),
+                    content: '[舔]',
                 },
                 {
                     address: require('../../../assets/emoj/74.gif'),
@@ -226,6 +299,9 @@ export default {
         }
     },
     methods: {
+        onClickLeft() {
+            this.$router.go(-1)
+        },
         // 表情显示
         checkemoj() {
             // 选择表情事件
@@ -251,10 +327,11 @@ export default {
                 //         console.log(error)
                 //     })
 
-                Toast.success('    提交成功        等待审核')
+                // 最新需求:不需要这个
+                // Toast.success('    提交成功        等待审核')
                 this.inputValue = ''
-                // 这里后续加一个判断
-                // this.youhuiShow=true;
+                // 这里后续加一个优惠券弹框判断,已加
+                this.youhuiShow = true
             } else {
                 Notify({
                     message: '内容不能为空哦',
@@ -292,36 +369,27 @@ export default {
 
 
 <style lang="scss" scoped>
-/* 这是我增加的心声布局
- */
-* {
-    margin: 0;
-    padding: 0;
+.van-nav-bar .van-icon {
+    color: #000;
 }
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+.van-nav-bar__title {
+    font-size: 0.9rem;
 }
 
-h1,
-h2 {
-    font-weight: normal;
+.header {
+    background: url('../../../../static/img/banner@3x.png') no-repeat center top;
+    // width: 100%;
+    height: 10.82rem;
+    background-size: 100% 100%;
+    font-size: 0.8rem;
+    padding: 10px 10px 10px 15px;
+    > div {
+        text-align: left;
+        margin-top: 5px;
+        color: #fff;
+    }
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-}
-
-/* 这是心声聊天的其它部分 */
 .aspirations {
     background-color: #f2f3f5;
 }
@@ -334,9 +402,10 @@ li {
 }
 
 .main {
+    position: relative;
     height: 27.18rem;
     margin-bottom: 2.18rem;
-    img {
+    .bgc {
         margin: 7rem auto;
     }
     .message {
@@ -354,26 +423,33 @@ li {
     position: fixed;
     bottom: 0;
     width: 20rem;
-    height: 2.18rem;
+    height: 2.6rem;
     z-index: 999;
     background-color: white;
     input {
         padding-left: 0.62rem;
         float: left;
         width: 13.48rem;
-        height: 2.18rem;
+        height: 2.2rem;
         font-size: 16px;
+        // 去除默认样式
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: 0;
+        border: 0;
+        background-color: #fff;
+
     }
     i {
         width: 2.3rem;
-        height: 2.18rem;
-        line-height: 2.18rem;
+        height: 2.6rem;
+        line-height: 2.6rem;
         float: left;
         font-size: 1.5rem;
     }
     button {
         width: 3.2rem;
-        height: 2.18rem;
+        height: 2.6rem;
         float: left;
         background-color: #333b46;
         color: #fff;
@@ -383,8 +459,19 @@ li {
 
 .my-emojlists ul {
     padding: 20px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
     li {
-        float: left;
+        // float: left;
     }
+}
+.van-popup--bottom {
+    width: 20rem;
+}
+.youhui-bgc {
+    width: 278px;
 }
 </style>

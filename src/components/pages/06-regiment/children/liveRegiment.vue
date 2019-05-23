@@ -24,18 +24,32 @@
 
             <!-- 图片直播部分 -->
             <section class="list">
-                
+                <van-uploader :after-read="onRead" accept="image/gif, image/jpeg" multiple>
+                    <van-icon name="photograph" />
+                </van-uploader>
             </section>
         </main>
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Uploader } from 'vant';
+
+Vue.use(Uploader);
 export default {
     data() {
         return {
             userId: this.$route.query.id, //接收传过来的值
         }
+    },
+    methods: {
+       
+            onRead(file, detail) {
+                console.log(file);
+                
+            },
+     
     },
 }
 </script>
@@ -62,6 +76,5 @@ export default {
             color: #ccc;
         }
     }
-    
 }
 </style>
