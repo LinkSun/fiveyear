@@ -23,9 +23,54 @@
             <!-- 下面是显示的背景 -->
             <img class="bgc" src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow">
             <!-- van-pull-refresh下拉刷新 -->
-            <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-                <wxChat :data="wxChatData" :showShade="false" :ownerAvatarUrl="ownerAvatarUrl" :contactAvatarUrl="contactAvatarUrl" :width="width">
-                </wxChat>
+            <van-pull-refresh v-model="isLoading" @refresh="onRefresh" :success-duration='100'>
+                <!-- 2019年5月24日15:30:50q做心声页优化 -->
+                <div class="wxchat-container" style="{backgroundColor: #efefef}">
+                    <div class="window" id="window-view-container">
+                        <!-- data is empty -->
+                        <div class="loading" v-if="wxChatData && wxChatData.length==0">
+                            <div style="margin-top: 300px;text-align:center; font-size: 16px;">
+                                <span>未查找到聊天记录</span>
+                            </div>
+                        </div>
+                        <!-- loading -->
+                        <div class="loading" v-if="wxChatData.length==0">
+                            <div style="margin-top: 300px;">
+                                <div>加载中...</div>
+                            </div>
+                        </div>
+                        <!-- main -->
+                        <div class="container-main" v-if="wxChatData && wxChatData.length>0">
+                            <div class="message">
+                                <ul>
+                                    <van-row v-for="message in wxChatData" :key="message.id+Math.random()*10">
+                                        <van-col span="24">
+                                            <li :class="message.direction==2?'an-move-right':'an-move-left'">
+                                                <div class="time">
+                                                    <span v-text="message.ctime"></span>
+                                                </div>
+                                                <p class="time system" v-if="message.type==10000">
+                                                    <span v-html="message.content"></span>
+                                                </p>
+                                                <div :class=" (message.direction==2?' self':'')" v-else>
+                                                    <img class="avatar" width="45" height="45" :src="message.auther">
+                                                    <!-- 文本 -->
+                                                    <div class="text" v-emotion="message.content"></div>
+
+                                                </div>
+                                            </li>
+                                        </van-col>
+                                    </van-row>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2019年5月24日15:30:50q做心声页优化结束 -->
             </van-pull-refresh>
             <!-- 这里增加弹框 -->
             <van-dialog v-model="youhuiShow" title="恭喜你获得司庆福利" show-cancel-button :showConfirmButton=false>
@@ -38,7 +83,6 @@
             <van-icon name="smile-o" @click="checkemoj" />
             <button @click="send">发送</button>
             <van-popup v-model="emojShow" position="bottom" :overlay="false">
-
                 <div class="my-emojlists">
                     <ul>
                         <li v-for="(item, index) in emojLists" :key="index">
@@ -47,10 +91,6 @@
                     </ul>
                 </div>
             </van-popup>
-            <!-- <van-popup v-model="youhuiShow" :overlay="false">
-            <img src="../../../../static/img/xs-youhui.jpg" alt="">
-            <van-popup> -->
-
         </footer>
 
     </div>
@@ -64,14 +104,15 @@ import { PullRefresh } from 'vant'
 import { Notify } from 'vant'
 import { Popup } from 'vant'
 import { Dialog } from 'vant'
-
+import { Row, Col } from 'vant'
 Vue.use(Toast)
     .use(Icon)
     .use(PullRefresh)
     .use(Notify)
     .use(Popup)
     .use(Dialog)
-import wxChat from './children/wxChat';
+    .use(Row)
+    .use(Col)
 
 export default {
     name: 'Aspirations',
@@ -122,7 +163,7 @@ export default {
                     address: require('../../../assets/emoj/11.gif'),
                     content: '[发怒]',
                 },
-                  {
+                {
                     address: require('../../../assets/emoj/17.gif'),
                     content: '[撇嘴]',
                 },
@@ -158,7 +199,7 @@ export default {
                     address: require('../../../assets/emoj/25.gif'),
                     content: '[舔]',
                 },
-                  {
+                {
                     address: require('../../../assets/emoj/17.gif'),
                     content: '[撇嘴]',
                 },
@@ -194,41 +235,41 @@ export default {
                     address: require('../../../assets/emoj/25.gif'),
                     content: '[舔]',
                 },
-                
+
                 {
-                    address: require('../../../assets/emoj/17.gif'),
+                    address: require('../../../assets/emoj/26.gif'),
                     content: '[撇嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/18.gif'),
-                    content: '[哎]',
+                    address: require('../../../assets/emoj/27.gif'),
+                    content: '[惊吓]',
                 },
                 {
-                    address: require('../../../assets/emoj/19.gif'),
+                    address: require('../../../assets/emoj/28.gif'),
                     content: '[发怒]',
                 },
                 {
-                    address: require('../../../assets/emoj/20.gif'),
+                    address: require('../../../assets/emoj/29.gif'),
                     content: '[吐了]',
                 },
                 {
-                    address: require('../../../assets/emoj/21.gif'),
+                    address: require('../../../assets/emoj/30.gif'),
                     content: '[偷笑]',
                 },
                 {
-                    address: require('../../../assets/emoj/22.gif'),
+                    address: require('../../../assets/emoj/31.gif'),
                     content: '[害羞]',
                 },
                 {
-                    address: require('../../../assets/emoj/23.gif'),
+                    address: require('../../../assets/emoj/32.gif'),
                     content: '[斜眼]',
                 },
                 {
-                    address: require('../../../assets/emoj/24.gif'),
+                    address: require('../../../assets/emoj/33.gif'),
                     content: '[歪嘴]',
                 },
                 {
-                    address: require('../../../assets/emoj/25.gif'),
+                    address: require('../../../assets/emoj/34.gif'),
                     content: '[舔]',
                 },
                 {
@@ -247,8 +288,7 @@ export default {
             upperId: 0,
             underId: 6,
             width: window.screen.width,
-            ownerAvatarUrl: '../../../../static/img/avatar1.png',
-            contactAvatarUrl: '../../../../static/img/avatar2.png',
+
             // 下面这是心声内容
             wxChatData: [
                 //     心声内容说明:
@@ -261,15 +301,38 @@ export default {
                     direction: 1,
                     id: 1,
                     auther: '../../../../../static/img/avatar2.png',
-                    content: '上市五周年,雄起 ! ! !',
-                    // ctime: new Date().toLocaleString(),
+                    content: '上市五周年,雄起 ! ! ![强][强]',
+                    ctime: new Date().toLocaleString(),
+                },
+                {
+                    direction: 1,
+                    id: 1,
+                    auther: '../../../../../static/img/avatar2.png',
+                    content: '上市五周年,雄起 ! ! ![强][强]',
+                    ctime: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
                     id: 2,
                     auther: '../../../../../static/img/avatar3.png',
                     content: '反手就是几个赞 [强][强][强]',
-                    // ctime: new Date().toLocaleString(),
+                    ctime: new Date().toLocaleString(),
+                },
+
+                {
+                    direction: 1,
+                    id: 3,
+                    auther: '../../../../../static/img/avatar4.png',
+                    content:
+                        '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
+                    ctime: new Date().toLocaleString(),
+                },
+                {
+                    direction: 2,
+                    id: 5,
+                    auther: '../../../../../static/img/avatar1.png',
+                    content: '上市五周年,雄起 ! ! ![微笑]',
+                    ctime: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
@@ -277,19 +340,27 @@ export default {
                     auther: '../../../../../static/img/avatar4.png',
                     content:
                         '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-                    // ctime: new Date().toLocaleString(),
+                    ctime: new Date().toLocaleString(),
+                },
+                {
+                    direction: 1,
+                    id: 3,
+                    auther: '../../../../../static/img/avatar4.png',
+                    content:
+                        '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
+                    ctime: new Date().toLocaleString(),
                 },
                 {
                     direction: 2,
                     id: 5,
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
-                    // ctime: new Date().toLocaleString(),
+                    ctime: new Date().toLocaleString(),
                 },
             ],
         }
     },
-    components: { wxChat },
+    components: {},
     created() {
         this.initWidth()
 
@@ -297,6 +368,22 @@ export default {
             // 下面这个后续解开
             this.isShow = true
         }
+    },
+    mounted() {
+        //  this.$axios
+        //             .get(
+        //                 // `/activity/messageadd?access_token=123&content=${this.inputValue}`
+        //                  `/activity/messageview'`
+                        
+        //             )
+        //             .then(function(response) {
+        //                 console.log("回来的数据是"+response);
+                        
+        //                 this.wxChatData.push(response);
+        //             })
+        //             .catch(function(error) {
+        //                 console.log(error)
+        //             })
     },
     methods: {
         onClickLeft() {
@@ -318,20 +405,24 @@ export default {
                 // 测试发送
                 // this.$axios
                 //     .get(
-                //         `/activity/messageadd?access_token=123&content=${this.inputValue}`
+                //         // `/activity/messageadd?access_token=123&content=${this.inputValue}`
+                //          `activity/messageadd?content=${this.inputValue}`
+                        
                 //     )
                 //     .then(function(response) {
-                //         // console.log(response)
+                //         console.log(response);
+                        
+                //         this.wxChatData.push(response);
                 //     })
                 //     .catch(function(error) {
                 //         console.log(error)
                 //     })
 
                 // 最新需求:不需要这个
-                // Toast.success('    提交成功        等待审核')
+                Toast.success('发送成功')
                 this.inputValue = ''
-                // 这里后续加一个优惠券弹框判断,已加
-                this.youhuiShow = true
+                // 这里后续加一个优惠券弹框判断
+                // this.youhuiShow = true
             } else {
                 Notify({
                     message: '内容不能为空哦',
@@ -358,7 +449,7 @@ export default {
             setTimeout(() => {
                 //   这里后续可以增加请求,请求更多数据
 
-                this.$toast('刷新成功')
+                // this.$toast('刷新成功')
                 this.isLoading = false
                 // this.count++;
             }, 500)
@@ -379,7 +470,7 @@ export default {
 .header {
     background: url('../../../../static/img/banner@3x.png') no-repeat center top;
     // width: 100%;
-    height: 10.82rem;
+    height: 9.82rem;
     background-size: 100% 100%;
     font-size: 0.8rem;
     padding: 10px 10px 10px 15px;
@@ -438,7 +529,6 @@ export default {
         outline: 0;
         border: 0;
         background-color: #fff;
-
     }
     i {
         width: 2.3rem;
@@ -448,7 +538,7 @@ export default {
         font-size: 1.5rem;
     }
     button {
-        width: 3.2rem;
+        width: 3.5rem;
         height: 2.6rem;
         float: left;
         background-color: #333b46;
@@ -464,14 +554,158 @@ export default {
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    li {
-        // float: left;
-    }
 }
 .van-popup--bottom {
     width: 20rem;
 }
 .youhui-bgc {
     width: 278px;
+}
+
+// 从子页面复制过来的
+.wxchat-container {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    /* overflow: hidden; */
+}
+
+.window {
+    /* box-shadow: 1px 1px 20px -5px #000; max-width: 450px; */
+    min-width: 300px;
+    background: #f5f5f5;
+    // margin: 0 auto;
+    margin-bottom: 2.6rem;
+    overflow: hidden;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    z-index: 101;
+}
+
+.loading,
+.no-more {
+    text-align: center;
+    color: #b0b0b0;
+    line-height: 100px;
+}
+.no-more {
+    line-height: 60px;
+}
+.pull-right {
+    float: right;
+}
+.link-line {
+    text-decoration: underline;
+}
+.message {
+    /* height: 24rem; */
+    padding: 10px 15px;
+    /*overflow-y: scroll;*/
+    background-color: #f5f5f5;
+}
+.message li {
+    // margin-bottom: 15px;
+    left: 0;
+    position: relative;
+    display: block;
+    margin-top: 47px;
+}
+.message li:nth-child(1) {
+    margin-top: 10px;
+}
+.message .time {
+    // margin: 10px 0;
+    text-align: center;
+}
+.message .text {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    max-width: calc(100% - 75px);
+    min-height: 35px;
+    line-height: 2.1;
+    font-size: 15px;
+    padding: 6px 10px;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    box-shadow: 0px 1px 7px -5px #000;
+}
+.message .avatar {
+    float: left;
+    margin: 0 10px 0 0;
+    border-radius: 3px;
+    background: #fff;
+}
+.message .time > span {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #8e8888;
+    border-radius: 2px;
+    // background-color: #dadada;
+}
+.message .system > span {
+    padding: 4px 9px;
+    text-align: left;
+}
+.message .text:before {
+    content: ' ';
+    position: absolute;
+    top: 9px;
+    right: 100%;
+    border: 6px solid transparent;
+    border-right-color: #fff;
+}
+.message .self {
+    text-align: right;
+}
+.message .self .avatar {
+    float: right;
+    margin: 0 0 0 10px;
+}
+.message .self .text {
+    background-color: #9eea6a;
+}
+
+.message .self .text:before {
+    right: inherit;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #9eea6a;
+}
+.message .image {
+    max-width: 200px;
+}
+img.static-emotion-gif,
+img.static-emotion {
+    vertical-align: middle !important;
+}
+
+.an-move-left {
+    left: 0;
+    animation: moveLeft 0.7s ease;
+    -webkit-animation: moveLeft 0.7s ease;
+    display: flex;
+}
+
+.an-move-right {
+    left: 0;
+    animation: moveRight 0.7s ease;
+    -webkit-animation: moveRight 0.7s ease;
+}
+.bgnone {
+    background: none;
+}
+/* 这是我加的 */
+.an-move-left > div > div {
+    float: left;
+}
+
+.an-move-left {
+    height: 15px;
 }
 </style>

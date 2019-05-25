@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
+        <van-nav-bar title="彩生活上市五周年庆" left-text=""   />
         <header class="header">
             <img src="../../static/img/header.jpg" alt="">
         </header>
@@ -121,7 +121,8 @@ export default {
     color: #000;
 }
 .van-nav-bar__title {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .home {

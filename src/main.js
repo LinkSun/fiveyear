@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 
 import Axios from "axios";
 Vue.prototype.$axios =Axios;
-Axios.defaults.baseURL="http://laravel.com/";//配置基地址
+Axios.defaults.baseURL="https://siqingbackyard-czytest.colourlife.com";//配置基地址
 
 // 图片懒加载
 import VueLazyload from 'vue-lazyload'
@@ -26,6 +26,12 @@ Vue.use(VueLazyload, {
   loading: '../static/img/loading2.gif',
   attempt: 1
 })
+
+// fullpage
+
+import VueFullPage from 'vue-fullpage.js'
+
+Vue.use(VueFullPage);
 
 /**
  * 转换成图片表情
