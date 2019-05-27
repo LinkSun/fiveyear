@@ -47,7 +47,7 @@
                                         <van-col span="24">
                                             <li :class="message.direction==2?'an-move-right':'an-move-left'">
                                                 <div class="time">
-                                                    <span v-text="message.ctime"></span>
+                                                    <span v-text="message.time"></span>
                                                 </div>
                                                 <p class="time system" v-if="message.type==10000">
                                                     <span v-html="message.content"></span>
@@ -141,7 +141,7 @@ export default {
                 },
                 {
                     address: require('../../../assets/emoj/6.gif'),
-                    content: '[闭眼]',
+                    content: '[流泪]',
                 },
                 {
                     address: require('../../../assets/emoj/7.gif'),
@@ -157,27 +157,47 @@ export default {
                 },
                 {
                     address: require('../../../assets/emoj/10.gif'),
-                    content: '[流泪]',
+                    content: '[大哭]',
                 },
                 {
                     address: require('../../../assets/emoj/11.gif'),
+                    content: '[尴尬]',
+                },
+                {
+                    address: require('../../../assets/emoj/12.gif'),
                     content: '[发怒]',
+                },
+                {
+                    address: require('../../../assets/emoj/13.gif'),
+                    content: '[调皮]',
+                },
+                {
+                    address: require('../../../assets/emoj/14.gif'),
+                    content: '[呲牙]',
+                },
+                {
+                    address: require('../../../assets/emoj/15.gif'),
+                    content: '[惊讶]',
+                },
+                {
+                    address: require('../../../assets/emoj/16.gif'),
+                    content: '[难过]',
                 },
                 {
                     address: require('../../../assets/emoj/17.gif'),
-                    content: '[撇嘴]',
+                    content: '[酷]',
                 },
                 {
                     address: require('../../../assets/emoj/18.gif'),
-                    content: '[哎]',
+                    content: '[冷汗]',
                 },
                 {
                     address: require('../../../assets/emoj/19.gif'),
-                    content: '[发怒]',
+                    content: '[抓狂]',
                 },
                 {
                     address: require('../../../assets/emoj/20.gif'),
-                    content: '[吐了]',
+                    content: '[吐]',
                 },
                 {
                     address: require('../../../assets/emoj/21.gif'),
@@ -185,96 +205,59 @@ export default {
                 },
                 {
                     address: require('../../../assets/emoj/22.gif'),
-                    content: '[害羞]',
+                    content: '[愉快]',
                 },
                 {
                     address: require('../../../assets/emoj/23.gif'),
-                    content: '[斜眼]',
+                    content: '[白眼]',
                 },
                 {
                     address: require('../../../assets/emoj/24.gif'),
-                    content: '[歪嘴]',
+                    content: '[傲慢]',
                 },
                 {
                     address: require('../../../assets/emoj/25.gif'),
-                    content: '[舔]',
+                    content: '[饥饿]',
                 },
-                {
-                    address: require('../../../assets/emoj/17.gif'),
-                    content: '[撇嘴]',
-                },
-                {
-                    address: require('../../../assets/emoj/18.gif'),
-                    content: '[哎]',
-                },
-                {
-                    address: require('../../../assets/emoj/19.gif'),
-                    content: '[发怒]',
-                },
-                {
-                    address: require('../../../assets/emoj/20.gif'),
-                    content: '[吐了]',
-                },
-                {
-                    address: require('../../../assets/emoj/21.gif'),
-                    content: '[偷笑]',
-                },
-                {
-                    address: require('../../../assets/emoj/22.gif'),
-                    content: '[害羞]',
-                },
-                {
-                    address: require('../../../assets/emoj/23.gif'),
-                    content: '[斜眼]',
-                },
-                {
-                    address: require('../../../assets/emoj/24.gif'),
-                    content: '[歪嘴]',
-                },
-                {
-                    address: require('../../../assets/emoj/25.gif'),
-                    content: '[舔]',
-                },
-
                 {
                     address: require('../../../assets/emoj/26.gif'),
-                    content: '[撇嘴]',
+                    content: '[困]',
                 },
                 {
                     address: require('../../../assets/emoj/27.gif'),
-                    content: '[惊吓]',
+                    content: '[惊恐]',
                 },
                 {
                     address: require('../../../assets/emoj/28.gif'),
-                    content: '[发怒]',
+                    content: '[流汗]',
                 },
                 {
                     address: require('../../../assets/emoj/29.gif'),
-                    content: '[吐了]',
+                    content: '[憨笑]',
                 },
                 {
                     address: require('../../../assets/emoj/30.gif'),
-                    content: '[偷笑]',
+                    content: '[大兵]',
                 },
                 {
                     address: require('../../../assets/emoj/31.gif'),
-                    content: '[害羞]',
+                    content: '[奋斗]',
                 },
                 {
                     address: require('../../../assets/emoj/32.gif'),
-                    content: '[斜眼]',
+                    content: '[咒骂]',
                 },
                 {
                     address: require('../../../assets/emoj/33.gif'),
-                    content: '[歪嘴]',
+                    content: '[疑问]',
                 },
                 {
                     address: require('../../../assets/emoj/34.gif'),
-                    content: '[舔]',
+                    content: '[嘘]',
                 },
                 {
                     address: require('../../../assets/emoj/74.gif'),
-                    content: '[赞]',
+                    content: '[强]',
                 },
             ],
             youhuiShow: false, //优惠
@@ -296,27 +279,27 @@ export default {
                 //     id: 1, //根据这个来排序消息
                 //     type: 1, //1为文本，2为图片
                 //     content: '你好!![呲牙]', //当type为1时这里是文本消息，当type2为2时这里要存放图片地址；后续会支持语音的显示
-                //     ctime: new Date().toLocaleString() //显示当前消息的发送时间
+                //     time: new Date().toLocaleString() //显示当前消息的发送时间
                 {
                     direction: 1,
                     id: 1,
                     auther: '../../../../../static/img/avatar2.png',
                     content: '上市五周年,雄起 ! ! ![强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
                     id: 1,
                     auther: '../../../../../static/img/avatar2.png',
                     content: '上市五周年,雄起 ! ! ![强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
                     id: 2,
                     auther: '../../../../../static/img/avatar3.png',
                     content: '反手就是几个赞 [强][强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
 
                 {
@@ -325,14 +308,14 @@ export default {
                     auther: '../../../../../static/img/avatar4.png',
                     content:
                         '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 2,
                     id: 5,
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
@@ -340,7 +323,7 @@ export default {
                     auther: '../../../../../static/img/avatar4.png',
                     content:
                         '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 1,
@@ -348,14 +331,14 @@ export default {
                     auther: '../../../../../static/img/avatar4.png',
                     content:
                         '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
                 {
                     direction: 2,
                     id: 5,
                     auther: '../../../../../static/img/avatar1.png',
                     content: '上市五周年,雄起 ! ! ![微笑]',
-                    ctime: new Date().toLocaleString(),
+                    time: new Date().toLocaleString(),
                 },
             ],
         }
@@ -370,20 +353,8 @@ export default {
         }
     },
     mounted() {
-        //  this.$axios
-        //             .get(
-        //                 // `/activity/messageadd?access_token=123&content=${this.inputValue}`
-        //                  `/activity/messageview'`
-                        
-        //             )
-        //             .then(function(response) {
-        //                 console.log("回来的数据是"+response);
-                        
-        //                 this.wxChatData.push(response);
-        //             })
-        //             .catch(function(error) {
-        //                 console.log(error)
-        //             })
+       
+        this.getMessage();
     },
     methods: {
         onClickLeft() {
@@ -403,26 +374,25 @@ export default {
         send() {
             if (this.inputValue != '') {
                 // 测试发送
-                // this.$axios
-                //     .get(
-                //         // `/activity/messageadd?access_token=123&content=${this.inputValue}`
-                //          `activity/messageadd?content=${this.inputValue}`
-                        
-                //     )
-                //     .then(function(response) {
-                //         console.log(response);
-                        
-                //         this.wxChatData.push(response);
-                //     })
-                //     .catch(function(error) {
-                //         console.log(error)
-                //     })
+                this.$axios
+                    .get(
+                        // `/activity/messageadd?access_token=123&content=${this.inputValue}`
+                        `activity/messageadd?content=${this.inputValue}`
+                    )
+                    .then(function(response) {
+                        console.log(response)
 
-                // 最新需求:不需要这个
-                Toast.success('发送成功')
+                        this.wxChatData.push(response)
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    })
+
                 this.inputValue = ''
                 // 这里后续加一个优惠券弹框判断
-                // this.youhuiShow = true
+                // this.youhuiShow = true;
+                // 上述没问题,返回成功
+                Toast.success('发送成功')
             } else {
                 Notify({
                     message: '内容不能为空哦',
@@ -443,7 +413,6 @@ export default {
                 this.width = 400
             }
         },
-
         //    下拉刷新
         onRefresh() {
             setTimeout(() => {
@@ -454,258 +423,44 @@ export default {
                 // this.count++;
             }, 500)
         },
+        // 封装函数
+        getMessage() {
+            let that = this
+            let timeId= setInterval(()=> {
+                this.$axios
+                    .get(
+                        // `/activity/messageadd?access_token=123&content=${this.inputValue}`
+                        `/activity/messageview`
+                    )
+                    .then(function(response) {
+                        // console.log(response);
+                        let arr = []
+                        let obj = response.data.content[0]
+                        for (const key in obj) {
+                            // console.log(JSON.parse(obj[key]));
+                            arr.push(JSON.parse(obj[key]))
+                        }
+                        //  console.log(arr);
+                        for (let index = 0; index < arr.length; index++) {
+                            that.wxChatData.push(arr[index])
+                            
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log(error)
+                    })
+            }, 2000)
+        },
+        // 封装函数结束
+    },
+    destroyed() {
+        clearInterval(timeId)
     },
 }
 </script>
 
 
 <style lang="scss" scoped>
-.van-nav-bar .van-icon {
-    color: #000;
-}
-.van-nav-bar__title {
-    font-size: 0.9rem;
-}
-
-.header {
-    background: url('../../../../static/img/banner@3x.png') no-repeat center top;
-    // width: 100%;
-    height: 9.82rem;
-    background-size: 100% 100%;
-    font-size: 0.8rem;
-    padding: 10px 10px 10px 15px;
-    > div {
-        text-align: left;
-        margin-top: 5px;
-        color: #fff;
-    }
-}
-
-.aspirations {
-    background-color: #f2f3f5;
-}
-.top {
-    height: 220px;
-    img {
-        width: 100%;
-        height: 100%;
-    }
-}
-
-.main {
-    position: relative;
-    height: 27.18rem;
-    margin-bottom: 2.18rem;
-    .bgc {
-        margin: 7rem auto;
-    }
-    .message {
-        height: 27.18rem;
-        padding: 10px;
-        .content {
-            height: 28rem;
-
-            background-color: skyblue;
-        }
-    }
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 20rem;
-    height: 2.6rem;
-    z-index: 999;
-    background-color: white;
-    input {
-        padding-left: 0.62rem;
-        float: left;
-        width: 13.48rem;
-        height: 2.2rem;
-        font-size: 16px;
-        // 去除默认样式
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        outline: 0;
-        border: 0;
-        background-color: #fff;
-    }
-    i {
-        width: 2.3rem;
-        height: 2.6rem;
-        line-height: 2.6rem;
-        float: left;
-        font-size: 1.5rem;
-    }
-    button {
-        width: 3.5rem;
-        height: 2.6rem;
-        float: left;
-        background-color: #333b46;
-        color: #fff;
-        border-radius: 5px;
-    }
-}
-
-.my-emojlists ul {
-    padding: 20px;
-    display: flex;
-    display: -webkit-flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.van-popup--bottom {
-    width: 20rem;
-}
-.youhui-bgc {
-    width: 278px;
-}
-
-// 从子页面复制过来的
-.wxchat-container {
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    /* overflow: hidden; */
-}
-
-.window {
-    /* box-shadow: 1px 1px 20px -5px #000; max-width: 450px; */
-    min-width: 300px;
-    background: #f5f5f5;
-    // margin: 0 auto;
-    margin-bottom: 2.6rem;
-    overflow: hidden;
-    padding: 0;
-    height: 100%;
-    position: relative;
-    z-index: 101;
-}
-
-.loading,
-.no-more {
-    text-align: center;
-    color: #b0b0b0;
-    line-height: 100px;
-}
-.no-more {
-    line-height: 60px;
-}
-.pull-right {
-    float: right;
-}
-.link-line {
-    text-decoration: underline;
-}
-.message {
-    /* height: 24rem; */
-    padding: 10px 15px;
-    /*overflow-y: scroll;*/
-    background-color: #f5f5f5;
-}
-.message li {
-    // margin-bottom: 15px;
-    left: 0;
-    position: relative;
-    display: block;
-    margin-top: 47px;
-}
-.message li:nth-child(1) {
-    margin-top: 10px;
-}
-.message .time {
-    // margin: 10px 0;
-    text-align: center;
-}
-.message .text {
-    display: inline-block;
-    position: relative;
-    padding: 0 10px;
-    max-width: calc(100% - 75px);
-    min-height: 35px;
-    line-height: 2.1;
-    font-size: 15px;
-    padding: 6px 10px;
-    text-align: left;
-    word-break: break-all;
-    background-color: #fff;
-    color: #000;
-    border-radius: 4px;
-    box-shadow: 0px 1px 7px -5px #000;
-}
-.message .avatar {
-    float: left;
-    margin: 0 10px 0 0;
-    border-radius: 3px;
-    background: #fff;
-}
-.message .time > span {
-    display: inline-block;
-    padding: 0 5px;
-    font-size: 12px;
-    color: #8e8888;
-    border-radius: 2px;
-    // background-color: #dadada;
-}
-.message .system > span {
-    padding: 4px 9px;
-    text-align: left;
-}
-.message .text:before {
-    content: ' ';
-    position: absolute;
-    top: 9px;
-    right: 100%;
-    border: 6px solid transparent;
-    border-right-color: #fff;
-}
-.message .self {
-    text-align: right;
-}
-.message .self .avatar {
-    float: right;
-    margin: 0 0 0 10px;
-}
-.message .self .text {
-    background-color: #9eea6a;
-}
-
-.message .self .text:before {
-    right: inherit;
-    left: 100%;
-    border-right-color: transparent;
-    border-left-color: #9eea6a;
-}
-.message .image {
-    max-width: 200px;
-}
-img.static-emotion-gif,
-img.static-emotion {
-    vertical-align: middle !important;
-}
-
-.an-move-left {
-    left: 0;
-    animation: moveLeft 0.7s ease;
-    -webkit-animation: moveLeft 0.7s ease;
-    display: flex;
-}
-
-.an-move-right {
-    left: 0;
-    animation: moveRight 0.7s ease;
-    -webkit-animation: moveRight 0.7s ease;
-}
-.bgnone {
-    background: none;
-}
-/* 这是我加的 */
-.an-move-left > div > div {
-    float: left;
-}
-
-.an-move-left {
-    height: 15px;
-}
+// 多的样式统一封装在static/css文件里
+@import '../../../../static/css/aspirations.scss';
 </style>

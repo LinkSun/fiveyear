@@ -46,7 +46,7 @@ function toEmotion(text, isNoGif){
   text = text.replace(/\[[\u4E00-\u9FA5]{1,3}\]/gi, function(word){
       var newWord = word.replace(/\[|\]/gi,'');
       var index = list.indexOf(newWord);
-      var backgroundPositionX = -index * 24
+      var backgroundPositionX = -index * 24;
       var imgHTML = '';
       if(index<0){
           return word;

@@ -1,0 +1,70 @@
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.home {
+    background-color: #04223b;
+    // height: 40.88rem;
+}
+.header {
+    height: 10.37rem;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.main {
+    // height: 28.43rem;
+    img {
+        width: 100%;
+    }
+}
+
+.main > div {
+    padding: 0 20px 20px 20px;
+    height: 19rem;
+}
+
+.main > div .van-col {
+    width: 8.1rem;
+    // background-color: #dce8eb;
+    background: url("../../static/img/icon_bg@2x.png") center center no-repeat;
+    margin-top: 1.8rem;
+    border-radius: 10px;
+    color: #455ea3;
+    h3 {
+        height: 0.6rem;
+        line-height: 0.6rem;
+        color: #455ea3;
+    }
+    p {
+        color: #455ea3;
+        display: block;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.6rem;
+        /* 让文字一行显示 */
+        word-break: keep-all;
+        white-space: nowrap;
+        /* 字体让它小于12px */
+        // transform: scale(0.8);
+    }
+}
+.main > div .van-row {
+    height: 6.1rem;
+}
+.foot {
+    height: 10.46rem;
+    color: #e5e7ea;
+    .ch {
+        font-size: 0.8rem;
+    }
+    .en {
+        font-size: 0.6rem;
+    }
+}

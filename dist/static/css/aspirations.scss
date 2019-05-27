@@ -1,0 +1,248 @@
+.van-nav-bar .van-icon {
+    color: #000;
+}
+.van-nav-bar__title {
+    font-size: 0.9rem;
+}
+
+.header {
+    background: url('../../../../static/img/banner@3x.png') no-repeat center top;
+    // width: 100%;
+    height: 9.82rem;
+    background-size: 100% 100%;
+    font-size: 0.8rem;
+    padding: 10px 10px 10px 15px;
+    > div {
+        text-align: left;
+        margin-top: 5px;
+        color: #fff;
+    }
+}
+
+.aspirations {
+    background-color: #f2f3f5;
+}
+.top {
+    height: 220px;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.main {
+    position: relative;
+    height: 27.18rem;
+    margin-bottom: 2.18rem;
+    .bgc {
+        margin: 7rem auto;
+    }
+    .message {
+        height: 27.18rem;
+        padding: 10px;
+        .content {
+            height: 28rem;
+
+            background-color: skyblue;
+        }
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 20rem;
+    height: 2.6rem;
+    z-index: 999;
+    background-color: white;
+    input {
+        padding-left: 0.62rem;
+        float: left;
+        width: 13.48rem;
+        height: 2.2rem;
+        font-size: 16px;
+        // 去除默认样式
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: 0;
+        border: 0;
+        background-color: #fff;
+    }
+    i {
+        width: 2.3rem;
+        height: 2.6rem;
+        line-height: 2.6rem;
+        float: left;
+        font-size: 1.5rem;
+    }
+    button {
+        width: 3.5rem;
+        height: 2.6rem;
+        float: left;
+        background-color: #333b46;
+        color: #fff;
+        border-radius: 5px;
+    }
+}
+
+.my-emojlists ul {
+    padding: 20px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.van-popup--bottom {
+    width: 20rem;
+}
+.youhui-bgc {
+    width: 278px;
+}
+
+// 从子页面复制过来的
+.wxchat-container {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    /* overflow: hidden; */
+}
+
+.window {
+    /* box-shadow: 1px 1px 20px -5px #000; max-width: 450px; */
+    min-width: 300px;
+    background: #f5f5f5;
+    // margin: 0 auto;
+    margin-bottom: 2.6rem;
+    overflow: hidden;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    z-index: 101;
+}
+
+.loading,
+.no-more {
+    text-align: center;
+    color: #b0b0b0;
+    line-height: 100px;
+}
+.no-more {
+    line-height: 60px;
+}
+.pull-right {
+    float: right;
+}
+.link-line {
+    text-decoration: underline;
+}
+.message {
+    /* height: 24rem; */
+    padding: 10px 15px;
+    /*overflow-y: scroll;*/
+    background-color: #f5f5f5;
+}
+.message li {
+    // margin-bottom: 15px;
+    left: 0;
+    position: relative;
+    display: block;
+    margin-top: 47px;
+}
+.message li:nth-child(1) {
+    margin-top: 10px;
+}
+.message .time {
+    // margin: 10px 0;
+    text-align: center;
+}
+.message .text {
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    max-width: calc(100% - 75px);
+    min-height: 35px;
+    line-height: 2.1;
+    font-size: 15px;
+    padding: 6px 10px;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    box-shadow: 0px 1px 7px -5px #000;
+}
+.message .avatar {
+    float: left;
+    margin: 0 10px 0 0;
+    border-radius: 3px;
+    background: #fff;
+}
+.message .time > span {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #8e8888;
+    border-radius: 2px;
+    // background-color: #dadada;
+}
+.message .system > span {
+    padding: 4px 9px;
+    text-align: left;
+}
+.message .text:before {
+    content: ' ';
+    position: absolute;
+    top: 9px;
+    right: 100%;
+    border: 6px solid transparent;
+    border-right-color: #fff;
+}
+.message .self {
+    text-align: right;
+}
+.message .self .avatar {
+    float: right;
+    margin: 0 0 0 10px;
+}
+.message .self .text {
+    background-color: #9eea6a;
+}
+
+.message .self .text:before {
+    right: inherit;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #9eea6a;
+}
+.message .image {
+    max-width: 200px;
+}
+img.static-emotion-gif,
+img.static-emotion {
+    vertical-align: middle !important;
+}
+
+.an-move-left {
+    left: 0;
+    animation: moveLeft 0.7s ease;
+    -webkit-animation: moveLeft 0.7s ease;
+    display: flex;
+}
+
+.an-move-right {
+    left: 0;
+    animation: moveRight 0.7s ease;
+    -webkit-animation: moveRight 0.7s ease;
+}
+.bgnone {
+    background: none;
+}
+/* 这是我加的 */
+.an-move-left > div > div {
+    float: left;
+}
+
+.an-move-left {
+    height: 15px;
+}
