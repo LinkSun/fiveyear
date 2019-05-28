@@ -5,9 +5,9 @@
         <full-page ref="fullpage" :options="options">
            
             <div class="section">
-                <router-link :to="{ path: '/4' }">
+                <!-- <router-link :to="{ path: '/4' }">
                 <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow  />
-                </router-link>
+                </router-link> -->
                 <div class="content2 content2-1">
                     <!-- <p>第二页</p> -->
                     <video controls controlslist="nodownload">

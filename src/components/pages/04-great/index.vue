@@ -4,9 +4,9 @@
         <!-- 引入fullpage -->
         <full-page ref="fullpage" :options="options">
             <div class="section">
-               <router-link :to="{ path: '/' }">
+               <!-- <router-link :to="{ path: '/' }">
                 <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow  />
-                </router-link>
+                </router-link> -->
                 <div class="content1">
                     <!-- <p>第一页</p> -->
                     <!-- 动画 -->

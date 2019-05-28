@@ -1,7 +1,7 @@
 <template>
     <div class="regiment">
         <!-- 头部 -->
-        <van-nav-bar title="图片直播" left-text="" left-arrow @click-left="onClickLeft" />
+        <!-- <van-nav-bar title="图片直播" left-text="" left-arrow @click-left="onClickLeft" /> -->
         <header class="header">
             <img src="../../../../static/img/header.jpg" alt="">
         </header>

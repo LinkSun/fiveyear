@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-         <van-nav-bar title="庆典流程" left-text="" left-arrow @click-left="onClickLeft" />
+         <!-- <van-nav-bar title="庆典流程" left-text="" left-arrow @click-left="onClickLeft" /> -->
         <img src="../../../../static/img/liucheng.png" alt="">
     </div>
 </template>

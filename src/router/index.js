@@ -20,7 +20,8 @@ import page6 from '../components/fullpages/page6.vue'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
+  mode:'history',
+  routes: [  
     {
       path: '/',
       name: 'Home',

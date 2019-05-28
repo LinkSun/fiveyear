@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" />
+        <!-- <van-nav-bar title="彩生活上市五周年庆" left-text="" left-arrow @click-left="onClickLeft" /> -->
         <header class="header">
             <div>
                 5年一个瞬间，一路上我们留下多少美好记忆。
