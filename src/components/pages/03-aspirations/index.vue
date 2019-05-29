@@ -20,15 +20,6 @@
         </header>
 
         <div class="main">
-            <van-popup v-model="emojShow" position="bottom" :overlay="true">
-                <div class="my-emojlists">
-                    <ul>
-                        <li v-for="(item, index) in emojLists" :key="index">
-                            <img :src="item.address" alt="" @click="emojHide(item)">
-                        </li>
-                    </ul>
-                </div>
-            </van-popup>
             <!-- 下面是显示的背景 -->
             <!-- <img class="bgc" src="../../../../static/img/xs-bgc.jpg" alt="" v-if="isShow"> -->
             <!-- van-pull-refresh下拉刷新 -->
@@ -51,11 +42,18 @@
                                                 <span v-html="message.content"></span>
                                             </p>
                                             <div :class=" (message.direction==2?' self':'')" v-else>
-                                                <img class="avatar" width="45" height="45" :src="message.auther" v-if="message.auther!=''">
+                                                <div class="myimg">
+                                                    <img class="avatar" width="45" height="45" :src="message.auther" v-if="message.auther!=''">
+
+                                                </div>
                                                 <!-- 文本 -->
 
-                                                <div class="text" v-emotion="message.content">
-
+                                                <!-- <div class="text" v-emotion="message.content"> -->
+                                                <div class="text">
+                                                    <div class="username">
+                                                        {{message.name}}
+                                                    </div>
+                                                    <div v-emotion="message.content" class="neirong">内容</div>
                                                 </div>
 
                                             </div>
@@ -97,6 +95,24 @@
             <span @click="send" class="btn">发送</span>
 
         </footer>
+        <div class="fuli" @click="goDiscount">
+            <div class="first">司庆</div>
+            <div>福利</div>
+        </div>
+        
+        <van-row>
+            <van-col span="24">
+                <van-popup v-model="emojShow" position="bottom" :overlay="true">
+                    <div class="my-emojlists">
+                        <ul>
+                            <li v-for="(item, index) in emojLists" :key="index">
+                                <img :src="item.address" alt="" @click="emojHide(item)">
+                            </li>
+                        </ul>
+                    </div>
+                </van-popup>
+            </van-col>
+        </van-row>
 
     </div>
 
@@ -359,8 +375,7 @@ export default {
     mounted() {
         // 测试token
         let tokentest =
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiMTY3M2YwOTM0ZTU4ZGIzZWZkYTNjZDg5YmIxY2ViYTUiLCJpYXQiOjE1NTkwMzMxODAsIm5iZiI6MTU1OTAzMzE4MCwiZXhwIjoxNTU5MDQwMzgwLCJzdWIiOjEwMDI4NTEzNjcsInNjb3BlcyI6IltdIn0_.c45511bba0e86e16e35e82ecac9b9670e27eb0498d660993c8890ea74218211b'
-
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
         let token = sessionStorage.getItem('access_token')
         // 第一次加载先获取一次
         this.$axios
@@ -393,30 +408,34 @@ export default {
         },
         send() {
             let tokentest =
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiMTY3M2YwOTM0ZTU4ZGIzZWZkYTNjZDg5YmIxY2ViYTUiLCJpYXQiOjE1NTkwMzMxODAsIm5iZiI6MTU1OTAzMzE4MCwiZXhwIjoxNTU5MDQwMzgwLCJzdWIiOjEwMDI4NTEzNjcsInNjb3BlcyI6IltdIn0_.c45511bba0e86e16e35e82ecac9b9670e27eb0498d660993c8890ea74218211b'
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
             let token = sessionStorage.getItem('access_token')
             // let that = this;
             if (this.inputValue != '') {
                 // 测试发送
                 this.$axios
-                    .get(
-                        `activity/messageadd?&content=${
-                            this.inputValue
-                        }&access_token=${token}`
+                    .post(
+                        `activity/messageadd`,
+                        {
+                            content:this.inputValue,
+                            access_token:token
+                        }
                     )
                     .then(response => {
                         //  Toast.success('发送成功')
-                        // console.log();
+                        console.log(response);
                         // that.wxChatData.push(response)
-                        let is_first = JSON.parse(response.data[0]).is_first
+                        let is_first = JSON.parse(response.data[0]).is_first;
+                        console.log(is_first);
                         if (is_first == 1) {
                             this.$axios
                                 .post('/coupon/combine/send', {
-                                    access_token: tokentest,
+                                    access_token: token,
                                 })
                                 .then(response => {
                                     console.log(response)
-                                    this.youhuiShow = true
+                                    this.youhuiShow = true;
+                                    alert("第一次")
                                 })
                                 .catch(err => {
                                     console.log(err)
@@ -471,10 +490,13 @@ export default {
                 // this.$toast('刷新成功')
             }, 500)
         },
+        goDiscount(){
+            this.$router.push({ path: 'page3-1' })
+        },
         // 封装函数
         getMessage() {
             let tokentest =
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiMTY3M2YwOTM0ZTU4ZGIzZWZkYTNjZDg5YmIxY2ViYTUiLCJpYXQiOjE1NTkwMzMxODAsIm5iZiI6MTU1OTAzMzE4MCwiZXhwIjoxNTU5MDQwMzgwLCJzdWIiOjEwMDI4NTEzNjcsInNjb3BlcyI6IltdIn0_.c45511bba0e86e16e35e82ecac9b9670e27eb0498d660993c8890ea74218211b'
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
             let token = sessionStorage.getItem('access_token')
             let that = this
             let timeId = setInterval(() => {
@@ -519,33 +541,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../../static/css/aspirations.scss';
-.aspirations {
-    // position: relative;
-    // width: 100%;
-}
-#myheader {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    // width: 100%;
-}
-.main {
-    margin-top: 10.5rem;
-    height: 29.88rem;
-}
-input[type='button'],
-input[type='submit'],
-input[type='file'],
-button {
-    cursor: pointer;
-    -webkit-appearance: none;
-}
-.fanpiao h3 {
-    color: #ed7542;
-    .caihui,
-    .chewei,
-    .caifu {
-        background: url('../../../../static/img/icon_yhq@2x.png');
-    }
-}
 </style>

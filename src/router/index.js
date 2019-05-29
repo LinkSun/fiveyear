@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Welcome from '../components/pages/01-welcome/index.vue'
 import Celebration from '../components/pages/02-celebration/index.vue'
 import Aspirations from '../components/pages/03-aspirations/index.vue'
+import Discount from '../components/pages/03-aspirations/children/Discount.vue'
 import Great from '../components/pages/04-great/index.vue'
 import Story from '../components/pages/05-story/index.vue'
 import Regiment from '../components/pages/06-regiment/index.vue'
@@ -96,6 +97,11 @@ export default new Router({
       path: '/page6',
       name: 'page6',
       component: page6
+    },
+    {
+      path: '/page3-1',
+      name: 'Discount',
+      component: Discount
     },
     {
       path: '/mytest',

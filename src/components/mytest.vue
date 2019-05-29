@@ -1,20 +1,15 @@
 <template>
     <div>
-       
-        <van-popup v-model="show" position="bottom" >
-            内容asdlfkasasdfasdfffffffffffffdasefcsdc
-
-            asfewqf4e
-        </van-popup>
+       <img src="../../static/img/youhuixiaoguo.jpg" alt="">
+     
     </div>
 
 </template>
 
 <script>
-import Vue from 'vue'
-import { Popup } from 'vant'
 
-Vue.use(Popup);
+
+
 export default {
     data() {
         return {
@@ -25,4 +20,8 @@ export default {
 </script>
 
 <style>
+img{
+    width: 100%;
+    height: 100%;
+}
 </style>
