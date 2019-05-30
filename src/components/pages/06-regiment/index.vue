@@ -106,8 +106,8 @@ export default {
             this.$router.push({ path: 'liveRegiment', query: { id: item.id } })
         },
         // 点击去全国各地司庆布置场景图
-        scenePhoto(){
-            this.$router.push({path:'wholeCountry'});
+        scenePhoto() {
+            this.$router.push({ path: 'wholeCountry' })
         },
         // 标题返回栏
         onClickLeft() {
@@ -117,8 +117,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.regiment{
+.regiment {
     background-color: #ecf1f3;
+    height: 100vh;
 }
 .van-nav-bar .van-icon {
     color: #000;
@@ -133,7 +134,7 @@ export default {
 }
 .main {
     // background-color: #111;
-    
+
     // background: url("../../../../static/img/zhibo-bg@2x.png") no-repeat center top;
     // color: #fff;
     color: #44559b;
@@ -198,6 +199,7 @@ export default {
             }
         }
         button {
+            margin-top: 1rem;
             width: 100%;
             height: 3rem;
             font-size: 1rem;
@@ -217,6 +219,8 @@ export default {
     color: #3586ff;
 }
 .upload {
+    position: fixed;
+    bottom: 0;
     width: 100%;
     height: 3rem;
     font-size: 1rem;
@@ -224,6 +228,6 @@ export default {
     line-height: 3rem;
     background-color: #487dbb;
     margin-top: 1.75rem;
- 
+    left: 0;
 }
 </style>

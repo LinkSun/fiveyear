@@ -1,11 +1,11 @@
-.van-nav-bar .van-icon {
+.aspirations .van-nav-bar .van-icon {
     color: #000;
 }
-.van-nav-bar__title {
+.aspirations .van-nav-bar__title {
     font-size: 0.9rem;
 }
 
-.header {
+.aspirations .header {
     background: url('../../../../static/img/banner@3x.png') no-repeat center top;
     // width: 100%;
     height: 9.82rem;
@@ -24,7 +24,7 @@
 .aspirations {
     background-color: #f2f3f5;
 }
-.top {
+.aspirations .top {
     height: 220px;
     img {
         width: 100%;
@@ -32,7 +32,7 @@
     }
 }
 
-.main {
+.aspirations .main {
     position: relative;
     height: 27.18rem;
     margin-bottom: 2.18rem;
@@ -40,7 +40,7 @@
         margin: 7rem auto;
     }
     .message {
-        height: 27.18rem;
+        // height: 27.18rem;
         padding: 10px;
         .content {
             height: 28rem;
@@ -50,12 +50,14 @@
     }
 }
 
-.footer {
+.aspirations .footer {
+    // display: none;
     padding-top: .3rem;
-    border-top: 1px solid #ccc;
+    // border-top: 1px solid #ccc;
+    box-shadow: 0px -1px 5px #ccc;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 20rem;
     height: 2.6rem;
     z-index: 999;
     background-color: #f5f5f5;
@@ -84,6 +86,7 @@
         font-size: 1.5rem;
     }
     .btn {
+        margin-right: 5px;
         width: 3.5rem;
         height: 2.6rem;
         line-height: 2.6rem;
@@ -94,35 +97,35 @@
     }
 }
 
-.my-emojlists ul {
-    padding: 20px;
+.aspirations .my-emojlists ul {
+    padding: 1.13rem;
     display: flex;
     display: -webkit-flex;
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.van-popup--bottom {
+.aspirations .van-popup--bottom {
     width: 20rem;
 }
-.youhui-bgc {
+.aspirations .youhui-bgc {
     width: 278px;
 }
 
 // 从子页面复制过来的
-.wxchat-container {
+.aspirations .wxchat-container {
     width: 100%;
     // height: 100%;
     z-index: 100;
     /* overflow: hidden; */
 }
 
-.window {
+.aspirations .window {
     /* box-shadow: 1px 1px 20px -5px #000; max-width: 450px; */
     min-width: 300px;
     background: #f5f5f5;
     // margin: 0 auto;
-    margin-bottom: 2.6rem;
+    // margin-bottom: 2.6rem;
     overflow: hidden;
     padding: 0;
     height: 100%;
@@ -131,42 +134,43 @@
     padding-bottom: 1rem;
 }
 
-.loading,
-.no-more {
+.aspirations .loading,
+.aspirations .no-more {
     text-align: center;
     color: #b0b0b0;
     line-height: 100px;
 }
-.no-more {
+.aspirations .no-more {
     line-height: 60px;
 }
-.pull-right {
+.aspirations .pull-right {
     float: right;
 }
-.link-line {
+.aspirations .link-line {
     text-decoration: underline;
 }
-.message {
+.aspirations .message {
     /* height: 24rem; */
     padding: 10px 15px;
     /*overflow-y: scroll;*/
     background-color: #f5f5f5;
 }
-.message li {
+.aspirations .message li {
     // margin-bottom: 15px;
     left: 0;
     position: relative;
     display: block;
     margin-top: 47px;
 }
-.message li:nth-child(1) {
+.aspirations .message li:nth-child(1) {
     margin-top: 22px;
 }
-.message .time {
+.aspirations .message .time {
     // margin: 10px 0;
     text-align: center;
 }
-.message .text {
+.aspirations .message .text {
+    margin-top: 10px;
     display: inline-block;
     position: relative;
     padding: 0 10px;
@@ -182,13 +186,13 @@
     border-radius: 4px;
     box-shadow: 0px 1px 7px -5px #000;
 }
-.message .avatar {
+.aspirations .message .avatar {
     float: left;
     margin: 0 10px 0 0;
     border-radius: 3px;
     background: #fff;
 }
-.message .time > span {
+.aspirations .message .time > span {
     display: inline-block;
     padding: 0 5px;
     font-size: 12px;
@@ -196,11 +200,11 @@
     border-radius: 2px;
     // background-color: #dadada;
 }
-.message .system > span {
+.aspirations .message .system > span {
     padding: 4px 9px;
     text-align: left;
 }
-.message .text:before {
+.aspirations .message .text:before {
     content: ' ';
     position: absolute;
     top: 9px;
@@ -208,77 +212,78 @@
     border: 6px solid transparent;
     border-right-color: #fff;
 }
-.message .self {
+.aspirations .message .self {
     text-align: right;
 }
-.message .self .avatar {
+.aspirations .message .self .avatar {
     float: right;
     margin: 0 0 0 10px;
 }
-.message .self .text {
+.aspirations .message .self .text {
     background-color: #9eea6a;
 }
 
-.message .self .text:before {
+.aspirations .message .self .text:before {
     right: inherit;
     left: 100%;
     border-right-color: transparent;
     border-left-color: #9eea6a;
 }
-.message .image {
+.aspirations .message .image {
     max-width: 200px;
 }
-img.static-emotion-gif,
-img.static-emotion {
+.aspirations img.static-emotion-gif,
+.aspirations img.static-emotion {
     vertical-align: middle !important;
 }
 
-.an-move-left {
+.aspirations .an-move-left {
     left: 0;
     animation: moveLeft 0.7s ease;
     -webkit-animation: moveLeft 0.7s ease;
     display: flex;
 }
 
-.an-move-right {
+.aspirations .an-move-right {
     left: 0;
     animation: moveRight 0.7s ease;
     -webkit-animation: moveRight 0.7s ease;
 }
-.bgnone {
+.aspirations .bgnone {
     background: none;
 }
 /* 这是我加的 */
-.an-move-left > div > div {
+.aspirations .an-move-left > div > div {
     float: left;
 }
 
-.an-move-left {
+.aspirations .an-move-left {
     height: 15px;
 }
 
-.aspirations {
+.aspirations .aspirations {
     position: relative;
     // width: 100%;
+    height: 100vh;
 }
-#myheader {
+.aspirations #myheader {
     position: fixed;
     top: 0;
     z-index: 999;
-    width: 100%;
+    // width: 100%;
 }
-.main {
+.aspirations .main {
     margin-top: 10.5rem;
-    height: 29.88rem;
+    // height: 29.88rem;
 }
-input[type='button'],
-input[type='submit'],
-input[type='file'],
-button {
+.aspirations input[type='button'],
+.aspirations input[type='submit'],
+.aspirations input[type='file'],
+.aspirations button {
     cursor: pointer;
     -webkit-appearance: none;
 }
-.fanpiao h3 {
+.aspirations .fanpiao h4 {
     color: #ed7542;
     .caihui,
     .chewei,
@@ -286,7 +291,8 @@ button {
         background: url('../../../../static/img/icon_yhq@2x.png');
     }
 }
-.username{
+.aspirations .username{
+    line-height: 24px;
     position: absolute;
     top: -17px;
     // left: 0;
@@ -295,13 +301,13 @@ button {
     // overflow:hidden;
     // text-overflow:ellipsis; 
 }
-.an-move-left .username{
+.aspirations .an-move-left .username{
     left: 0;
 }
-.neirong{
+.aspirations .neirong{
     margin-top: 5px;
 }
-.self .username{
+.aspirations .self .username{
     right: 0;
     position: absolute;
     top: -17px;
@@ -309,13 +315,16 @@ button {
     // width: 80px;
     // right: 0;
 }
-.fuli{
+.aspirations .fuli{
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
-    position: fixed;
+    position: absolute;;
+    
     bottom: 3.1rem;
-    right: 0.5rem;
+    // right: 0.5rem;
+    // left: 15.9rem;
+    right: .6rem;
     background-color: #fff;
     z-index: 999;
 
@@ -327,4 +336,15 @@ button {
         margin-top: 0.5rem;
         
     }
+}
+.aspirations .myimg img{
+    width: 45px;
+    height: 45px;
+}
+.aspirations .neirong img{
+    width: 24px !important;
+    height:24px !important;
+}
+.aspirations .container-main{
+    padding-bottom: 2.6rem;
 }

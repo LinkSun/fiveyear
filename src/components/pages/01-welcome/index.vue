@@ -25,6 +25,7 @@ export default {
 }
 
 .main img {
+    display: block;
     width: 100%;
     height: 100%;
 }

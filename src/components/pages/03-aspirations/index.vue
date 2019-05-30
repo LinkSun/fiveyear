@@ -43,7 +43,7 @@
                                             </p>
                                             <div :class=" (message.direction==2?' self':'')" v-else>
                                                 <div class="myimg">
-                                                    <img class="avatar" width="45" height="45" :src="message.auther" v-if="message.auther!=''">
+                                                    <img class="avatar" width="45px" height="45px" :src="message.auther" v-if="message.auther!=''">
 
                                                 </div>
                                                 <!-- 文本 -->
@@ -70,36 +70,78 @@
             <!-- 2019年5月24日15:30:50q做心声页优化结束 -->
             <!-- </van-pull-refresh> -->
             <!-- 这里增加弹框 -->
+            <!-- 不能留言提示 -->
+            <van-dialog v-model="noSay" confirm-button-text="我知道了" confirm-button-color="#16317c" class="noSay">
+                <h4>温馨提示</h4>
+                <p>{{"感谢你的留言,今天我们已经收到了您的祝福,请明天再来～"}}</p>
+            </van-dialog>
+            <!-- 优惠券 -->
             <van-dialog v-model="youhuiShow" title="" show-cancel-button :showConfirmButton=false class="fanpiao">
 
-                <h3>恭喜你获得司庆福利</h3>
-                <van-row class="caihui">
-                    <van-col span="8">你好</van-col>
-                    <van-col span="16"></van-col>
-                </van-row>
-                <van-row class="chewei">
-                    <van-col span="8"></van-col>
-                    <van-col span="16"></van-col>
-                </van-row>
-                <van-row class="caifu">
-                    <van-col span="8"></van-col>
-                    <van-col span="16"></van-col>
-                </van-row>
+                <h4>恭喜你获得司庆福利</h4>
+                <div class="yh-main">
+                    <van-row class="first" v-show="caihui_coupon==1">
+                        <van-col span="8" class="left">
+                            <div class="title">5</div>
+                            <div class="content">
+                                满20元可以使用
+                            </div>
+                        </van-col>
+                        <van-col span="13" class="right">
+                            <p>彩惠优惠券(京东,社区速达使用)</p>
+                            <div>
+                                <div class="content">自领用之日起7天</div>
+                                <div class="btn" @click="goDiscount">去使用</div>
+                            </div>
+                        </van-col>
+                    </van-row>
+                    <van-row class="secend" v-show="caifu_coupon==1">
+                        <van-col span="8" class="left">
+                            <div class="title">188</div>
+                            <div class="content">
+                                购买财富1号赠送
+                            </div>
+                        </van-col>
+                        <van-col span="13" class="right">
+                            <p>彩富优惠券</p>
+                            <div>
+                                <div class="content">2019.06.01-2019.06.30</div>
+                                <div class="btn" @click="goDiscount">去使用</div>
+                            </div>
+                        </van-col>
+                    </van-row>
+                    <van-row class="three" v-show="caipark_coupon==1">
+                        <van-col span="8" class="left">
+                            <div class="title">1000</div>
+                            <div class="content">
+                                车位直抵1000元
+                            </div>
+                        </van-col>
+                        <van-col span="13" class="right">
+                            <p>彩车位抵扣券</p>
+                            <div>
+                                <div class="content">2019.06.01-2019.06.30</div>
+                                <div class="btn" @click="goDiscount">去使用</div>
+                            </div>
+                        </van-col>
+                    </van-row>
+                </div>
+
             </van-dialog>
             <!--  -->
         </div>
-        <footer class="footer">
+        <footer class="footer" ref="mySend">
             <input id="text" type="text" placeholder="留言既得司庆大礼包" v-model="inputValue" class="my-input">
             <van-icon name="smile-o" @click="checkemoj" />
             <!-- <button @click="send" type="button">发送</button> -->
             <span @click="send" class="btn">发送</span>
 
+            <div class="fuli" @click="goDiscount">
+                <div class="first">司庆</div>
+                <div>福利</div>
+            </div>
         </footer>
-        <div class="fuli" @click="goDiscount">
-            <div class="first">司庆</div>
-            <div>福利</div>
-        </div>
-        
+
         <van-row>
             <van-col span="24">
                 <van-popup v-model="emojShow" position="bottom" :overlay="true">
@@ -139,6 +181,11 @@ export default {
     name: 'Aspirations',
     data() {
         return {
+            noSay: false, //不能留言
+            caihui_coupon: 0, //优惠券
+            caifu_coupon: 0,
+            caipark_coupon: 0,
+
             emojLists: [
                 {
                     address: require('../../../assets/emoj/1.gif'),
@@ -309,60 +356,6 @@ export default {
             //         content: '上市五周年,雄起 ! ! ![强][强]',
             //         time: new Date().toLocaleString(),
             //     },
-            //     {
-            //         direction: 1,
-            //         id: 1,
-            //         auther: '../../../../../static/img/avatar2.png',
-            //         content: '上市五周年,雄起 ! ! ![强][强]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            //     {
-            //         direction: 1,
-            //         id: 2,
-            //         auther: '../../../../../static/img/avatar3.png',
-            //         content: '反手就是几个赞 [强][强][强]',
-            //         time: new Date().toLocaleString(),
-            //     },
-
-            //     {
-            //         direction: 1,
-            //         id: 3,
-            //         auther: '../../../../../static/img/avatar4.png',
-            //         content:
-            //             '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            //     {
-            //         direction: 2,
-            //         id: 5,
-            //         auther: '../../../../../static/img/avatar1.png',
-            //         content: '上市五周年,雄起 ! ! ![微笑]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            //     {
-            //         direction: 1,
-            //         id: 3,
-            //         auther: '../../../../../static/img/avatar4.png',
-            //         content:
-            //             '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            //     {
-            //         direction: 1,
-            //         id: 3,
-            //         auther: '../../../../../static/img/avatar4.png',
-            //         content:
-            //             '祝贺彩生活上市五周年,希望彩生活越来越好![强][强][强]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            //     {
-            //         direction: 2,
-            //         id: 5,
-            //         auther: '../../../../../static/img/avatar1.png',
-            //         content: '上市五周年,雄起 ! ! ![微笑]',
-            //         time: new Date().toLocaleString(),
-            //     },
-            // ],
         }
     },
     components: {},
@@ -373,9 +366,20 @@ export default {
         }
     },
     mounted() {
+        // 指定时间(8:00-22:00),获取dom,并隐藏
+        let now = new Date()
+        let hour = now.getHours()
+        //    hour=8;
+        //    console.log("现在时间是:"+hour+"点");
+        if (hour < 8 || hour >= 22) {
+            //    console.log(this.$refs.mySend)
+            let sedDom = this.$refs.mySend
+            sedDom.style.display = 'none'
+        }
+
         // 测试token
         let tokentest =
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiODVjN2I0ZDQ0ZjIxZmNlZWQ3NTBlMGYyYTcwNjExODEiLCJpYXQiOjE1NTkyMDc3MDksIm5iZiI6MTU1OTIwNzcwOSwiZXhwIjoxNTU5MjE0OTA5LCJzdWIiOjEwMDI4NTExODMsInNjb3BlcyI6IltdIn0_.1bd87c12107e95e8c4ff7f59f6404a8fc70c34af534170f10cd5f0756a6da1dc'
         let token = sessionStorage.getItem('access_token')
         // 第一次加载先获取一次
         this.$axios
@@ -408,48 +412,69 @@ export default {
         },
         send() {
             let tokentest =
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiMDViMDIxYWI1YmY0ODE1NThkNDBhYzljYzgxZDk1ZTUiLCJpYXQiOjE1NTkyMDgzMjksIm5iZiI6MTU1OTIwODMyOSwiZXhwIjoxNTU5MjE1NTI5LCJzdWIiOjEwMDI4NTExODYsInNjb3BlcyI6IltdIn0_.a66564f4c6a0d2c1b4e0ac0d010f3706250e7f2aeb972e31aa5341c91d9f1172'
+                
             let token = sessionStorage.getItem('access_token')
             // let that = this;
             if (this.inputValue != '') {
                 // 测试发送
                 this.$axios
-                    .post(
-                        `activity/messageadd`,
-                        {
-                            content:this.inputValue,
-                            access_token:token
-                        }
-                    )
+                    .post(`activity/messageadd`, {
+                        content: this.inputValue,
+                        access_token: token,
+                    })
                     .then(response => {
                         //  Toast.success('发送成功')
-                        console.log(response);
+                        // console.log(response)
+                        if (response.data.message) {
+                            this.noSay = true
+                            // alert(response.data.message)
+                            // return false
+                        }
                         // that.wxChatData.push(response)
-                        let is_first = JSON.parse(response.data[0]).is_first;
-                        console.log(is_first);
+                        let is_first = JSON.parse(response.data[0]).is_first
                         if (is_first == 1) {
                             this.$axios
                                 .post('/coupon/combine/send', {
-                                    access_token: token,
+                                    access_token: tokentest,
                                 })
                                 .then(response => {
-                                    console.log(response)
-                                    this.youhuiShow = true;
-                                    alert("第一次")
+                                    // console.log(response)
+                                    console.log(response.data.content)
+                                    let content = response.data.content
+                                    // alert('第一次')
+                                    if (
+                                        content.caihui_coupon == 1 ||
+                                        content.caifu_coupon == 1 ||
+                                        content.caipark_coupon == 1
+                                    ) {
+                                        this.caipark_coupon =
+                                            content.caihui_coupon
+                                        this.caifu_coupon = content.caifu_coupon
+                                        this.caihui_coupon =
+                                            content.caipark_coupon
+                                        this.youhuiShow = true
+                                    }
                                 })
                                 .catch(err => {
                                     console.log(err)
+                                    // 这是测试用的
+                                    // this.youhuiShow = true
+                                    //  console.log(response.data.content);
+                                    // 有任意一个就显示
+                                    // let isHave=response.content.caihui_coupon
+
+                                    // alert('第一次')
                                 })
                         }
                     })
                     .catch(error => {
                         console.log(error)
+                        //这是测试用的
+                        // this.youhuiShow = true
                     })
 
                 this.inputValue = ''
-                // 这里后续加一个优惠券弹框判断
-                // this.youhuiShow = true
-                // 上述没问题,返回成功
             } else {
                 Notify({
                     message: '内容不能为空哦',
@@ -490,13 +515,20 @@ export default {
                 // this.$toast('刷新成功')
             }, 500)
         },
-        goDiscount(){
-            this.$router.push({ path: 'page3-1' })
+        goDiscount() {
+            this.$router.push({
+                path: 'page3-1',
+                query: {
+                    caihui_coupon: this.caihui_coupon,
+                    caifu_coupon: this.caifu_coupon,
+                    caipark_coupon: this.caipark_coupon,
+                },
+            })
         },
         // 封装函数
         getMessage() {
             let tokentest =
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiYjRiZWU5ZmUwYWVmOTI3ZTJhOWUyYjcwNzI4MzJkNmUiLCJpYXQiOjE1NTkxMzQwMTIsIm5iZiI6MTU1OTEzNDAxMiwiZXhwIjoxNTU5MTQxMjEyLCJzdWIiOjEwMDI4NTEyMDUsInNjb3BlcyI6IltdIn0_.19c4d1e9e0204e03bf05c33a805070652caa6ac6198014d5c0d39b6ec12f08ed'
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiODVjN2I0ZDQ0ZjIxZmNlZWQ3NTBlMGYyYTcwNjExODEiLCJpYXQiOjE1NTkyMDc3MDksIm5iZiI6MTU1OTIwNzcwOSwiZXhwIjoxNTU5MjE0OTA5LCJzdWIiOjEwMDI4NTExODMsInNjb3BlcyI6IltdIn0_.1bd87c12107e95e8c4ff7f59f6404a8fc70c34af534170f10cd5f0756a6da1dc'
             let token = sessionStorage.getItem('access_token')
             let that = this
             let timeId = setInterval(() => {
@@ -506,8 +538,6 @@ export default {
                         `/activity/messageview?access_token=${token}&`
                     )
                     .then(function(response) {
-                        // console.log(response);
-
                         let arr = JSON.parse(response.data.content)
                         // console.log(arr);
 
@@ -539,6 +569,197 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '../../../../static/css/aspirations.scss';
+.aspirations .yh-main {
+    transform: scale(0.8);
+    margin-left: -1.3rem;
+    margin-top: -1.93rem;
+    .first {
+        font-size: 0.8rem;
+        width: 19.43rem;
+        height: 6.43rem;
+        background: url('../../../../static/img/icon_yhq@2x.png') no-repeat
+            center center;
+        background-size: 100% 100%;
+        .left {
+            height: 100%;
+            width: 7.8rem;
+            color: #fff;
+
+            .title {
+                text-align: center;
+                font-size: 1.8rem;
+                /* height: 2rem; */
+                line-height: -2rem;
+                margin: 1.0625rem;
+                position: relative;
+            }
+            .title::before {
+                content: '¥';
+                font-size: 0.9rem;
+                position: absolute;
+                top: 0;
+                top: 0.2rem;
+                left: 1.8rem;
+            }
+            .content {
+            }
+        }
+        .right {
+            height: 100%;
+            p {
+                word-break: keep-all;
+                white-space: nowrap;
+                margin-top: 1.2rem;
+                font-weight: 500;
+                text-align: left;
+            }
+            > div {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 2rem;
+                .content {
+                    color: #b8b8b8;
+                    font-size: 0.6rem;
+                }
+                .btn {
+                    color: #f28752;
+                    border: 1px solid #f28752;
+                    border-radius: 1.25rem;
+                    width: 3.2rem;
+                }
+            }
+        }
+    }
+    .secend {
+        font-size: 0.8rem;
+        width: 19.43rem;
+        height: 6.43rem;
+        background: url('../../../../static/img/icon_yhq@2x.png') no-repeat
+            center center;
+        background-size: 100% 100%;
+        .left {
+            height: 100%;
+            width: 7.8rem;
+            color: #fff;
+
+            .title {
+                text-align: center;
+                font-size: 1.8rem;
+                /* height: 2rem; */
+                line-height: -2rem;
+                margin: 1.0625rem;
+                position: relative;
+            }
+            .title::before {
+                content: '¥';
+                font-size: 0.9rem;
+                position: absolute;
+                top: 0;
+                top: 0.2rem;
+                left: 0.8rem;
+            }
+        }
+        .right {
+            height: 100%;
+            p {
+                word-break: keep-all;
+                white-space: nowrap;
+                margin-top: 1.2rem;
+                font-weight: 500;
+                text-align: left;
+            }
+            > div {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 2rem;
+                .content {
+                    color: #b8b8b8;
+                    font-size: 0.6rem;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                }
+                .btn {
+                    color: #f28752;
+                    border: 1px solid #f28752;
+                    border-radius: 1.25rem;
+                    width: 3.2rem;
+                }
+            }
+        }
+    }
+    .three {
+        font-size: 0.8rem;
+        width: 19.43rem;
+        height: 6.43rem;
+        background: url('../../../../static/img/icon_yhq@2x.png') no-repeat
+            center center;
+        background-size: 100% 100%;
+        .left {
+            height: 100%;
+            width: 7.8rem;
+            color: #fff;
+
+            .title {
+                text-align: center;
+                font-size: 1.8rem;
+                /* height: 2rem; */
+                line-height: -2rem;
+                margin: 1.0625rem;
+                position: relative;
+            }
+            .title::before {
+                content: '¥';
+                font-size: 0.9rem;
+                position: absolute;
+                top: 0;
+                top: 0.2rem;
+                left: 0.4rem;
+            }
+        }
+        .right {
+            height: 100%;
+            p {
+                word-break: keep-all;
+                white-space: nowrap;
+                margin-top: 1.2rem;
+                font-weight: 500;
+                text-align: left;
+            }
+            > div {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 2rem;
+                .content {
+                    color: #b8b8b8;
+                    font-size: 0.6rem;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                }
+                .btn {
+                    color: #f28752;
+                    border: 1px solid #f28752;
+                    border-radius: 1.25rem;
+                    width: 3.2rem;
+                }
+            }
+        }
+    }
+}
+.noSay h4 {
+    color: #16317c;
+    font-weight: 600;
+}
+.noSay p {
+   padding: 0 1.8rem;
+    line-height: 1.5rem;
+}
+.aspirations .footer{
+    width: 100%;
+}
+.aspirations #myheader{
+    width: 100%;
+}
+
 </style>
