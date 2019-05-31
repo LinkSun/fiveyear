@@ -79,17 +79,16 @@
         margin-left: 5px;
     }
     i {
-        width: 2.3rem;
-        height: 2.6rem;
-        line-height: 2.6rem;
-        // float: left;
-        font-size: 1.5rem;
+        width: 3.3rem;
+        height: 2.4rem;
+        line-height: 2.4rem;
+        font-size: 1.9rem;
     }
     .btn {
         margin-right: 5px;
         width: 3.5rem;
-        height: 2.6rem;
-        line-height: 2.6rem;
+        height: 2.4rem;
+        line-height: 2.4rem;
         // float: left;
         background-color: #333b46;
         color: #fff;
@@ -106,7 +105,7 @@
     flex-wrap: wrap;
 }
 .aspirations .van-popup--bottom {
-    width: 20rem;
+    // width: 20rem;
 }
 .aspirations .youhui-bgc {
     width: 278px;
@@ -131,7 +130,7 @@
     height: 100%;
     position: relative;
     z-index: 101;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
 }
 
 .aspirations .loading,
@@ -292,7 +291,7 @@
     }
 }
 .aspirations .username{
-    line-height: 24px;
+    line-height: 19px;
     position: absolute;
     top: -17px;
     // left: 0;
@@ -316,6 +315,7 @@
     // right: 0;
 }
 .aspirations .fuli{
+    display: none;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
@@ -348,3 +348,13 @@
 .aspirations .container-main{
     padding-bottom: 2.6rem;
 }
+
+// 这里是我修改底层的样式
+// .van-popup--bottom{
+    
+    // transform: translate3d(-50%,0,0);
+    // -ms-transform: translate3d(-50%,0,0);
+    // -moz-transform: translate3d(-50%,0,0);
+    // -webkit-transform: translate3d(-50%,0,0);
+    // -o-transform: translate3d(-50%,0,0);
+// }

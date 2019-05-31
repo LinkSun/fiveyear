@@ -130,16 +130,7 @@
             </van-dialog>
             <!--  -->
         </div>
-        <footer class="footer" ref="mySend">
-            <input id="text" type="text" placeholder="留言既得司庆大礼包" v-model="inputValue" class="my-input">
-            <van-icon name="smile-o" @click="checkemoj" />
-            <!-- <button @click="send" type="button">发送</button> -->
-            <span @click="send" class="btn">发&nbsp;送</span>
-            <div class="fuli" @click="goDiscount" ref="siqingfuli">
-                <div class="first">司庆</div>
-                <div>福利</div>
-            </div>
-        </footer>
+
 
         <van-row>
             <van-col span="24">
@@ -375,16 +366,6 @@ export default {
         
         
 
-        // 指定时间(8:00-22:00),获取dom,并隐藏
-        let now = new Date()
-        let hour = now.getHours()
-        //    hour=8;
-        //    console.log("现在时间是:"+hour+"点");
-        if (hour < 8 || hour >= 22) {
-            //    console.log(this.$refs.mySend)
-            let sedDom = this.$refs.mySend
-            sedDom.style.display = 'none'
-        }
         // 显示福利按钮
          if(localStorage.getItem('caihui_coupon')==1 ||localStorage.getItem('caifu_coupon')==1 || localStorage.getItem('caipark_coupon')==1){
         let fuliDom = this.$refs.siqingfuli
@@ -427,116 +408,14 @@ export default {
         onClickLeft() {
             this.$router.go(-1)
         },
-        // 表情显示
-        checkemoj() {
-            // 选择表情事件
-            this.emojShow = true
-        },
+        
         // 表情隐藏
         emojHide(value) {
             this.emojShow = false
 
             this.inputValue = this.inputValue.concat(value.content)
         },
-        send() {
-            let tokentest =
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTUUhEMC1CSzZDLUs5NFotUEVSTC1NWTdDSDFXN0ZWNFciLCJqdGkiOiIwZWVkYThlNGZiOTVhNzFmZDUyNjBjZWFiZjA1ODEzNyIsImlhdCI6MTU1OTMwNTg0MSwibmJmIjoxNTU5MzA1ODQxLCJleHAiOjE1NTkzMTMwNDEsInN1YiI6IjEwMDI2NDY0NzEiLCJzY29wZXMiOiJzbnNhcGlfYmFzZSJ9.9a246cef41f19860672db5de994c918b38549cb67484d2973c7e521f31c5acf7'
-
-            let token = sessionStorage.getItem('access_token')
-            // let that = this;
-            if (this.inputValue != '') {
-                // 测试发送
-                this.$axios
-                    .post(`activity/messageadd`, {
-                        content: this.inputValue,
-                        access_token: tokentest,
-                    })
-                    .then(response => {
-                        //  Toast.success('发送成功')
-                        console.log(response)
-                        if (
-                            response.data.code == 1001 ||
-                            response.data.code == 1002
-                        ) {
-                            this.noSay = true
-                            this.tips = response.data.message
-                            // alert(response.data.message)
-                            // return false
-                        }
-                        // that.wxChatData.push(response)
-                        let is_first = JSON.parse(response.data[0]).is_first
-                        // if (true ) {
-                        if (is_first ==1 ) {
-                            // localStorage.removeItem('caihui_coupon')
-                            // localStorage.removeItem('caifu_coupon')
-                            // localStorage.removeItem('caipark_coupon')
-
-                            this.$axios
-                                .post('/coupon/combine/send', {
-                                    access_token: tokentest,
-                                })
-                                .then(response => {
-                                    // console.log(response)
-                                    console.log(response.data.content)
-                                    let content = response.data.content
-                                    // alert('第一次')
-                                    if (
-                                        content.caihui_coupon == 1 ||
-                                        content.caifu_coupon == 1 ||
-                                        content.caipark_coupon == 1
-                                    ) {
-                                        this.caipark_coupon =
-                                            content.caipark_coupon
-                                        this.caifu_coupon = content.caifu_coupon
-                                        this.caihui_coupon =
-                                            content.caihui_coupon
-                                        // 将值存起来
-
-                                        localStorage.setItem(
-                                            'caihui_coupon',
-                                            content.caihui_coupon
-                                        )
-                                        localStorage.setItem(
-                                            'caifu_coupon',
-                                            content.caifu_coupon
-                                        )
-                                        localStorage.setItem(
-                                            'caipark_coupon',
-                                            content.caipark_coupon
-                                        )
-                                        // 司庆福利显示隐藏
-                                        let fuliDom = this.$refs.siqingfuli
-                                        fuliDom.style.display = 'block'
-                                        this.youhuiShow = true
-                                    }
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                    // 这是测试用的
-                                    // this.youhuiShow = true
-                                    //  console.log(response.data.content);
-                                    // 有任意一个就显示
-                                    // let isHave=response.content.caihui_coupon
-
-                                    // alert('第一次')
-                                })
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        //这是测试用的
-                        // this.youhuiShow = true
-                    })
-
-                this.inputValue = ''
-            } else {
-                Notify({
-                    message: '内容不能为空哦',
-                    duration: 2000,
-                    background: '#1989fa',
-                })
-            }
-        },
+     
         //    下拉刷新
         onRefresh() {
             setTimeout(() => {
@@ -544,16 +423,7 @@ export default {
                 // this.$toast('刷新成功')
             }, 500)
         },
-        goDiscount() {
-            this.$router.push({
-                path: 'page3-1',
-                query: {
-                    caihui_coupon: this.caihui_coupon,
-                    caifu_coupon: this.caifu_coupon,
-                    caipark_coupon: this.caipark_coupon,
-                },
-            })
-        },
+    
         // 封装函数
         getMessage() {
             let tokentest =
@@ -592,15 +462,16 @@ export default {
         },
     },
     updated() {
-    //   let getScorll=document.querySelectorAll('#window-view-container')
-    //     // console.log(11);
-    //         console.log(getScorll);
+      let getScorll=document.querySelectorAll('#window-view-container')
+        // console.log(11);
+            console.log(getScorll);
             
-    //     // $('.content')
-    //     getScorll.scrollTop(9999);
+        // $('.content')
+        getScorll.scrollTop(9999);
 
-        // $('#window-view-container').scrollTop(99999);
+        $('#window-view-container').scrollTop(99999);
     },
+    
     destroyed() {
         clearInterval(this.timeId)
     },

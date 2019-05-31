@@ -2,7 +2,7 @@
     <div class="discount">
         <!-- <van-nav-bar title="领取记录" left-text="" left-arrow @click-left="onClickLeft" /> -->
         <div class="yh-main">
-            <!-- <van-row class="first" v-show="caihui_coupon==1">
+            <van-row class="first" v-show="caihui_coupon==1">
                 <van-col span="8" class="left">
                     <div class="title">5</div>
                     <div class="content">
@@ -13,7 +13,7 @@
                     <p>彩惠优惠券(京东,社区速达使用)</p>
                     <div>
                         <div class="content">自领用之日起7天</div>
-                        <div class="btn">去使用</div>
+                        <div class="btn" @click="goCaihui">去使用</div>
                     </div>
                 </van-col>
             </van-row>
@@ -28,7 +28,7 @@
                     <p>彩富优惠券</p>
                     <div>
                         <div class="content">2019.06.01-2019.06.30</div>
-                        <div class="btn">去使用</div>
+                        <div class="btn" @click="goCaifu">去使用</div>
                     </div>
                 </van-col>
             </van-row>
@@ -43,12 +43,12 @@
                     <p>彩车位抵扣券</p>
                     <div>
                         <div class="content">2019.06.01-2019.06.30</div>
-                        <div class="btn">去使用</div>
+                        <div class="btn" @click="goCaiche">去使用</div>
                     </div>
                 </van-col>
-            </van-row> -->
-            <!-- <p v-show="caihui_coupon==0 && caifu_coupon==0 && caipark_coupon==0">{{msg}}</p> -->
-               <van-row class="first" >
+            </van-row>
+            <!-- <p v-show="isShow">{{msg}}</p> -->
+               <!-- <van-row class="first" >
                 <van-col span="8" class="left">
                     <div class="title">5</div>
                     <div class="content">
@@ -92,7 +92,7 @@
                         <div class="btn">去使用</div>
                     </div>
                 </van-col>
-            </van-row>
+            </van-row> -->
         </div>
 
     </div>
@@ -103,60 +103,48 @@ import Vue from 'vue'
 
 import { Row, Col } from 'vant'
 Vue.use(Row).use(Col)
+import bus from "../../../bus/bus.js"
 export default {
     data() {
         return {
-            caihui_coupon: this.$route.query.caihui_coupon, //优惠券
-            caifu_coupon: this.$route.query.caifu_coupon,
-            caipark_coupon: this.$route.query.caifu_coupon,
-            // caihui_coupon: 1,
-            // caifu_coupon: 1,
-            // caipark_coupon: 1,
-            msg:''
+            caihui_coupon:0,
+            caifu_coupon:0,
+            caipark_coupon:0,
+            msg:'没有优惠券呢,第一次留言才有哦',
+            isShow:false,
+            urlCaihui:"https://caihui.test.colourlife.com/redirect",//去彩惠
+            urlCaifu:"https://caifu-czytest.colourlife.com/h5/v35/index",//去彩富
+            urlCaiche:"https://salesv2-ccw-test.colourlife.com/oauth",//去彩车位
         }
+    },
+    created() {
+
+      this.caihui_coupon=localStorage.getItem('caihui_coupon')
+      this.caifu_coupon=localStorage.getItem('caifu_coupon')
+      this.caipark_coupon=localStorage.getItem('caipark_coupon')
+    
     },
     mounted() {
         console.log(11);
         
-        // let tokentest =
-        //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiJJQ0VTTUpIWkYtNTQ4Qy1KUVhFLUVOOFEtNUUxSUZCTjU3UERMIiwianRpIjoiNzlhMjI4MTFhOTBjYzUyZThhYzBmNWMwYjQyZjYzOTMiLCJpYXQiOjE1NTkyMDc5MjUsIm5iZiI6MTU1OTIwNzkyNSwiZXhwIjoxNTU5MjE1MTI1LCJzdWIiOjEwMDI4NTExODQsInNjb3BlcyI6IltdIn0_.17920e64cd5b31129a6e61633a0feb8b28ee96455b4535668ac47c1dacb3e920'
-        // let token = sessionStorage.getItem('access_token')
-
-        // this.$axios
-        //     .post('/coupon/combine/send', {
-        //         access_token: tokentest,
-        //     })
-        //     .then(response => {
-        //         // console.log(response)
-        //         // console.log(response.data.message)
-        //         this.msg=response.data.message;
-        //         let content = response.data.content
-        //         // alert('第一次')
-        //         if (
-        //             content.caihui_coupon == 1 ||
-        //             content.caifu_coupon == 1 ||
-        //             content.caipark_coupon == 1
-        //         ) {
-        //             this.caipark_coupon = content.caihui_coupon
-        //             this.caifu_coupon = content.caifu_coupon
-        //             this.caihui_coupon = content.caipark_coupon
-        //         }
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-                // 这是测试用的
-                // this.youhuiShow = true
-                //  console.log(response.data.content);
-                // 有任意一个就显示
-                // let isHave=response.content.caihui_coupon
-
-                // alert('第一次')
-            // })
+       
     },
     methods: {
         // onClickLeft() {
         //     this.$router.go(-1)
         // },
+
+        goCaihui(){
+            
+           window.location.href=this.urlCaihui;
+        
+        },
+        goCaifu(){
+            window.location.href=this.urlCaifu;
+        },
+        goCaiche(){
+            window.location.href=this.urlCaiche;
+        },
     },
 }
 </script>

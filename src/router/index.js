@@ -17,6 +17,7 @@ import page3 from '../components/fullpages/page3.vue'
 import page4 from '../components/fullpages/page4.vue'
 import page5 from '../components/fullpages/page5.vue'
 import page6 from '../components/fullpages/page6.vue'
+import computer from "../components/pages/03-aspirations/computer";
 
 Vue.use(Router)
 
@@ -102,6 +103,11 @@ export default new Router({
       path: '/page3-1',
       name: 'Discount',
       component: Discount
+    },
+    {
+      path: '/computer',
+      name: 'computer',
+      component: computer
     },
     {
       path: '/mytest',

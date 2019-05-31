@@ -136,7 +136,7 @@
                         </van-row>
                         <van-row>
                             <van-col span="12">
-                                <label><input name="Fruit" type="checkbox" value="" /> 最美的太阳</label>
+                                <label><input name="Fruit" type="checkbox" value="" />幸福成长</label>
                             </van-col>
                             <van-col span="12">
                                 <label><input name="Fruit" type="checkbox" value="" />倔强</label>
